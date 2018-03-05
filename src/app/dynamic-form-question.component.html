@@ -1,0 +1,23 @@
+<div [formGroup]="form">
+  <label [attr.for]="question.key">{{question.label}}</label>
+
+  <div [ngSwitch]="question.controlType">
+
+    <input *ngSwitchCase="'textbox'" [formControlName]="question.key" [id]="question.key" [type]="question.type" pInputText>
+
+    <p-dropdown *ngSwitchCase="'dropdown'" [id]="question.key"  dataKey="key" optionLabel="value" [options]="question.options"  [formControlName]="question.key" [(ngModel)]="value"></p-dropdown>
+
+    <div *ngSwitchCase="'radio'">
+      <div *ngFor="let option of question.options">
+        <p-radioButton name="groupname" label="{{option.value}}" value={{option.key}} [formControlName]="question.key"></p-radioButton>
+      </div>
+    </div>
+
+    <p-calendar *ngSwitchCase="'date'" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" [formControlName]="question.key" dateFormat="mm-dd-yy"></p-calendar>
+
+    <app-complex-table *ngSwitchCase="'table'" [question]="question"></app-complex-table>
+
+  </div> 
+
+  <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+</div>
