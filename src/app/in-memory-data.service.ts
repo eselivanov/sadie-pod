@@ -1,37 +1,17 @@
-import { Injectable }       from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 import { TableQuestion }    from './question-table';
 import { DateQuestion }     from './question-date';
 import { RadioQuestion }    from './question-radio';
 import { DropdownQuestion } from './question-dropdown';
 import { QuestionBase }     from './question-base';
-import { GDEForm }          from './gdeform';
 import { TextboxQuestion }  from './question-textbox';
 import { GDEComponentType } from './gde.componenttype.enum';
 
+export class InMemoryDataService implements InMemoryDbService {
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { catchError, map, tap } from 'rxjs/operators';
-
-@Injectable()
-export class QuestionService {
-  private formsUrl = 'api/gdeforms';  // URL to web api
-
-
-  constructor(private http: HttpClient) { 
-
-    // let gde = this.getQuestions2(1);
-
-    // let s = gde.subscribe({
-    //   next(x) {console.log(x.id)},
-    //   error(x) {},
-    // });
-  }
-// Todo: get from a remote source of question metadata
-  // Todo: make asynchronous
-  getQuestions() {
+  createDb() {
+    const gdeforms = [];
 
     let questions: QuestionBase<any>[] = [
 
@@ -102,37 +82,11 @@ export class QuestionService {
       })
     ];
 
-    return questions.sort((a, b) => a.order - b.order);
+    questions = questions.sort((a, b) => a.order - b.order);
+
+    gdeforms.push({id : 1, questions : questions});
+    console.log(gdeforms);
+
+    return {gdeforms};
   }
-
-  /** GET hero by id. Will 404 if id not found */
-  getQuestions2(id: number): Observable<GDEForm> {
-    console.log("Question2");
-    const url = `${this.formsUrl}/${id}`;
-    return this.http.get<GDEForm>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<GDEForm>(`getHero id=${id}`))
-    );
-  }
-
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-   /** Log a HeroService message with the MessageService */
-   private log(message: string) {
-     console.log(message);
-   }
-
 }

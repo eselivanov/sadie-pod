@@ -1,0 +1,45 @@
+<h2>Patient Information</h2>
+<div  class="content-section implementation ui-fluid" style="width: 1200px">
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputHealthCardNumber">Health Card Number</label>
+        </div>
+        <div class="ui-g-8">
+          <input id="inputHealthCardNumber" type="text" pInputText>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputFirstName">First Name</label>
+        </div>
+        <div class="ui-g-8">
+            <input id="inputFirstName" type="text" pInputText>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputMiddleName">Middle Name</label>
+        </div>
+        <div class="ui-g-8">
+            <input id="inputMiddleName" type="text" pInputText>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputLastName">Last Name</label>
+        </div>
+        <div class="ui-g-8">
+            <input id="inputLastName" type="text" pInputText>
+        </div>
+    </div>        
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputDateOfBirth">Date of Birth</label>
+        </div>
+        <div class="ui-g-8">
+            <p-calendar id="inputDateOfBirth" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
+        </div>
+    </div>     
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<h2>Drug Requested</h2>
+<div  class="content-section implementation ui-fluid" style="width: 1200px">
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputDrug">Drug</label>
+        </div>
+        <div class="ui-g-8">
+            <p-dropdown id="inputDrug" [options]=drugs placeholder="--Select Drug--"></p-dropdown>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputIndication">Indication</label>
+        </div>
+        <div class="ui-g-8">
+            <p-dropdown id="inputIndication" [options]=indications placeholder="--Select Indication--"></p-dropdown>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputDrugOther">Specify Drug</label>
+        </div>
+        <div class="ui-g-8">
+            <input id="inputDrugOther" type="text" pInputText>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputIndication">Specify Indication</label>
+        </div>
+        <div class="ui-g-8">
+            <input id="inputIndication" type="text" pInputText>
+        </div>
+    </div>        
+  </div>
+</div>

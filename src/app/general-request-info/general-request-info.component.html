@@ -1,0 +1,45 @@
+<h2>General Information</h2>
+<div  class="content-section implementation ui-fluid" style="width: 1200px">
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputClassification">Classification</label>
+        </div>
+        <div class="ui-g-8">
+          <p-dropdown id="inputClassification" [options]=classifications placeholder="--Select Classification--"></p-dropdown>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputPriority">Classification</label>
+        </div>
+        <div class="ui-g-8">
+          <p-dropdown id="inputPriority" [options]=classifications placeholder="--Select Priority--"></p-dropdown>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputSpecialHandling">Special Handling</label>
+        </div>
+        <div class="ui-g-8">
+          <p-dropdown id="inputSpecialHandling" [options]=classifications placeholder="--Select an Option--"></p-dropdown>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputHospitalDischarge">Hospital Discharge</label>
+        </div>
+        <div class="ui-g-8">
+          <p-checkbox id="inputHospitalDischarge" ></p-checkbox>
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-g-4">
+          <label for="inputRequestDate">Request Date</label>
+        </div>
+        <div class="ui-g-8">
+            <p-calendar id="inputRequestDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
+        </div>
+    </div>     
+  </div>
+</div>

@@ -12,16 +12,16 @@
           <p-cellEditor [ngSwitch]="col.controlType">
               <ng-template  pTemplate="input">
                   <p-dropdown *ngSwitchCase="'dropdown'" [id]="question.key" dataKey="key" optionLabel="value" [options]="col.options"  [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}"></p-dropdown>
-                  <input      *ngSwitchCase="'text'"     [(ngModel)]="rowData[col.fieldName]" name="{{col.fieldName}}{{i}}" [ngModelOptions]="{standalone: true}" style="width: 100%" type="text" pInputText>
-                  <p-calendar *ngSwitchCase="'date'"     [(ngModel)]="rowData[col.fieldName]" name="{{col.fieldName}}{{i}}" [ngModelOptions]="{standalone: true}" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
-                  <p-checkbox *ngSwitchCase="'checkbox'" [(ngModel)]="rowData[col.fieldName]" name="{{col.fieldName}}{{i}}" [ngModelOptions]="{standalone: true}" binary="true" ></p-checkbox>
+                  <input      *ngSwitchCase="'text'"     [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" style="width: 100%" type="text" pInputText>
+                  <p-calendar *ngSwitchCase="'date'"     [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
+                  <p-checkbox *ngSwitchCase="'checkbox'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" binary="true" ></p-checkbox>
               </ng-template>
               <ng-template  pTemplate="output">
                   <!-- Changes to input need to be synchronized here -->
                   <p-dropdown *ngSwitchCase="'dropdown'" [id]="question.key" dataKey="key" optionLabel="value" [options]="col.options"  [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}"></p-dropdown>
-                  <input      *ngSwitchCase="'text'"     [(ngModel)]="rowData[col.fieldName]" name="{{col.fieldName}}{{i}}" [ngModelOptions]="{standalone: true}" style="width: 100%" type="text" pInputText>
-                  <p-calendar *ngSwitchCase="'date'"     [(ngModel)]="rowData[col.fieldName]" name="{{col.fieldName}}{{i}}" [ngModelOptions]="{standalone: true}" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
-                  <p-checkbox *ngSwitchCase="'checkbox'" [(ngModel)]="rowData[col.fieldName]" name="{{col.fieldName}}{{i}}" [ngModelOptions]="{standalone: true}" binary="true"></p-checkbox>
+                  <input      *ngSwitchCase="'text'"     [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" style="width: 100%" type="text" pInputText>
+                  <p-calendar *ngSwitchCase="'date'"     [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
+                  <p-checkbox *ngSwitchCase="'checkbox'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" binary="true"></p-checkbox>
               </ng-template>
            </p-cellEditor>                        
         </td>

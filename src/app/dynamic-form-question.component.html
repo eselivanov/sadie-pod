@@ -3,12 +3,12 @@
 
   <div [ngSwitch]="question.controlType">
 
-    <input *ngSwitchCase="'textbox'" [formControlName]="question.key" [id]="question.key" [type]="question.type" pInputText>
+    <input *ngSwitchCase="'textbox'" [formControlName]="question.key" [id]="question.key" [type]="question['type']" pInputText>
 
-    <p-dropdown *ngSwitchCase="'dropdown'" [id]="question.key"  dataKey="key" optionLabel="value" [options]="question.options"  [formControlName]="question.key" [(ngModel)]="value"></p-dropdown>
+    <p-dropdown *ngSwitchCase="'dropdown'" [id]="question.key"  dataKey="key" optionLabel="value" [options]="question['options']"  [formControlName]="question.key" [(ngModel)]="value"></p-dropdown>
 
     <div *ngSwitchCase="'radio'">
-      <div *ngFor="let option of question.options">
+      <div *ngFor="let option of question['options']">
         <p-radioButton name="groupname" label="{{option.value}}" value={{option.key}} [formControlName]="question.key"></p-radioButton>
       </div>
     </div>
