@@ -37,6 +37,18 @@ export class RuleServiceService {
       }).forEach(item => facts.push(item))
     });
 
+    questions.forEach( q => { 
+      q.value.filter((elem, index, arr) =>
+        elem.labTestName !== undefined
+      ).map( val => {
+        return {
+          "type": "LabResult",
+          "labResultType": val.labTestName['key'],
+          "labResultValue": val.labTestResult,
+        }
+      }).forEach(item => facts.push(item))
+    });
+
     return this.http.post<QuestionBase<any>[]>('http://localhost:9080/liberty-proj-war/rest/rules', facts, httpOptions);
       // .pipe(
       //   catchError(this.handleError('addHero', hero))
