@@ -5,7 +5,9 @@
 
     <input *ngSwitchCase="'textbox'" [formControlName]="question.key" [id]="question.key" [type]="question['type']" pInputText>
 
-    <p-dropdown *ngSwitchCase="'dropdown'" [id]="question.key"  dataKey="key" optionLabel="value" [options]="question['options']"  [formControlName]="question.key" [(ngModel)]="value"></p-dropdown>
+    <p-dropdown *ngSwitchCase="'dropdown'" [id]="question.key"  dataKey="key" optionLabel="value" [options]="question['options']"  [formControlName]="question.key"></p-dropdown>
+
+    <p-checkbox *ngSwitchCase="'checkbox'" [formControlName]="question.key" [id]="question.key" binary="true" ></p-checkbox>
 
     <div *ngSwitchCase="'radio'">
       <div *ngFor="let option of question['options']">

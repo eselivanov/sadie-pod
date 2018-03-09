@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { QuestionBase }     from '../question-base';
 import { TableQuestion }    from '../question-table';
+import { RuleServiceService } from '../rule-service.service';
 
 @Component({
   selector: 'app-complex-table',
@@ -12,9 +13,8 @@ export class ComplexTableComponent implements OnInit {
 
   @Input() question: TableQuestion;
 
-  constructor() { }
+  constructor(private rulesService: RuleServiceService) { }
 
   ngOnInit() {
   }
-
 }

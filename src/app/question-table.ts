@@ -1,5 +1,6 @@
 import { QuestionBase } from './question-base';
-import { LabResult } from './lab-result';
+import { LabResult } from './model/lab-result';
+import { DrugHistory } from './model/drug-history';
 import { TableColumn } from './table-column';
 
 export class TableQuestion extends QuestionBase<any[]> {

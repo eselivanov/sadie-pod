@@ -5,6 +5,7 @@ import { TableQuestion }    from './question-table';
 import { DateQuestion }     from './question-date';
 import { RadioQuestion }    from './question-radio';
 import { DropdownQuestion } from './question-dropdown';
+import { CheckboxQuestion } from './question-checkbox';
 import { QuestionBase }     from './question-base';
 import { GDEForm }          from './gdeform';
 import { TextboxQuestion }  from './question-textbox';

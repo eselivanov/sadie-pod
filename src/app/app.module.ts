@@ -40,19 +40,22 @@ import { InMemoryDataService }            from './in-memory-data.service';
 
 import { QuestionControlService }    from './question-control.service';
 import { QuestionService } from './question.service';
+import { RuleServiceService } from './rule-service.service';
 
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, ReactiveFormsModule, InputTextModule, ButtonModule, DropdownModule, 
-        TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, BrowserModule, MessagesModule, 
-        MessageModule, BrowserAnimationsModule, HttpClientModule, 
+        TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, MessagesModule, 
+        MessageModule, BrowserAnimationsModule, 
     
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+        HttpClientModule,
+    
+        // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+        // and returns simulated server responses.
+        // Remove it when a real server is ready to receive requests.
+        HttpClientInMemoryWebApiModule.forRoot(
+          InMemoryDataService, { dataEncapsulation: false, passThruUnknownUrl: true }
+        )
       
       ],
   declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent, 
@@ -60,7 +63,7 @@ import { QuestionService } from './question.service';
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
     DrugDosageRequestInfoComponent 
   ],
-  providers: [ QuestionControlService, QuestionService ],
+  providers: [ QuestionControlService, QuestionService, RuleServiceService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
