@@ -28,7 +28,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   getQuestions(): void {
-    this.service.getQuestions2(3)
+    this.service.getQuestions2(1)
       .subscribe(gde => {
           console.log('test' + gde.id + ' ' + gde.questions.length);
           this.questions = gde.questions;

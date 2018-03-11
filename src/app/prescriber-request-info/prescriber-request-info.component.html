@@ -1,63 +1,40 @@
-<h2>Prescriber Information</h2>
-<div  class="content-section implementation ui-fluid" style="width: 1200px">
-  <div class="ui-g">
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label>Name</label>
-        </div>
-        <div class="ui-g-8" >
-        </div>
-    </div>
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label>Registration Number</label>
-        </div>
-        <div class="ui-g-8" >
-        </div>
-    </div>    
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label>Registration Type</label>
-        </div>
-        <div class="ui-g-8" >
-        </div>
-    </div>    
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label>Jurisdication</label>
-        </div>
-        <div class="ui-g-8" >
-        </div>
-    </div>
-  </div>
-  <h3>Practice Location</h3>
-  <div class="ui-g">
-      <div class="ui-g-12 ui-md-6">
-          <div class="ui-g-4">
-            <label>Location Name</label>
-          </div>
-          <div class="ui-g-8" >
-          </div>
-      </div>    
-      <div class="ui-g-12 ui-md-6">
-          <div class="ui-g-4">
-            <label>Primary Fax Number</label>
-          </div>
-          <div class="ui-g-8" >
-          </div>
-      </div>    <div class="ui-g-12 ui-md-6">
-          <div class="ui-g-4">
-            <label>Address Line 1</label>
-          </div>
-          <div class="ui-g-8" >
-          </div>
-      </div>    
-      <div class="ui-g-12 ui-md-6">
-          <div class="ui-g-4">
-            <label>Primary Phone Number</label>
-          </div>
-          <div class="ui-g-8" >
-          </div>
-      </div>
-    </div>
+<h2 matSubheader>Prescriber Information</h2>
+
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
+     fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
+  <mat-form-field fxFlex="100%" fxFlexFill>
+    <input matInput placeholder="Name" readonly value="Fred Flinstone">
+  </mat-form-field>
+  <mat-form-field fxFlex fxFlexFill>
+    <input matInput placeholder="Registration Number" readonly value="12345678">
+  </mat-form-field>
+  <mat-form-field fxFlex fxFlexFill>
+    <input matInput placeholder="Registration Type" readonly value="CPSO">
+  </mat-form-field>
+  <mat-form-field fxFlex fxFlexFill>
+    <input matInput placeholder="Jurisdication" readonly value="ON">
+  </mat-form-field>
+</div>
+
+<h3 matSubheader>Practice Location</h3>
+
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
+     fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
+  <mat-form-field fxFlex="100%" fxFlexFill>
+    <input matInput placeholder="Location Name" readonly value="Joe's In &amp; Out Medical Express">
+  </mat-form-field>
+
+  <mat-form-field fxFlex="100%" fxFlexFill>
+    <input matInput placeholder="Address Line 1" readonly value="49 Place D'Armes">
+    <mat-icon matSuffix class="icon-color">mail</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+    <input matInput placeholder="Primary Fax Number" readonly value="(613) 555-5555">
+  </mat-form-field>
+
+  <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+    <input matInput placeholder="Primary Phone Number" readonly value="(613) 555-5556" />
+    <mat-icon matSuffix class="icon-color">phone</mat-icon>
+  </mat-form-field>
 </div>

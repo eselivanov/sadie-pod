@@ -1,4 +1,57 @@
-<p-table  class="gdeTable"  [columns]="question.columns" [value]="question.value" ngDefaultControl>
+<!-- <mat-table [dataSource]=question.value>
+  <ng-container matColumnDef="labResultType">
+    <mat-header-cell *matHeaderCellDef> Lab Result Type </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.labResultType}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="question.columns['labResultType']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: question.columns['labResultType'];"></mat-row>
+
+</mat-table> -->
+
+
+<mat-table [dataSource]="dataSource">
+
+  <!-- Position Column -->
+  <ng-container *ngFor="let column of question.columns" [matColumnDef]="column.fieldName">
+    <mat-header-cell *matHeaderCellDef> {{column.header}} </mat-header-cell>
+    <mat-cell *matCellDef="let rowData" [ngSwitch]="column.controlType">
+
+      <mat-form-field *ngSwitchCase="'dropdown'">
+        <mat-select [compareWith]="compareFn" [(ngModel)]="rowData[column.fieldName]">
+          <mat-option *ngFor="let option of column.options" [value]="option">
+            {{option.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field *ngSwitchCase="'text'">
+        <input matInput [(ngModel)]="rowData[column.fieldName]">
+      </mat-form-field>
+
+      <mat-form-field *ngSwitchCase="'date'">
+          <input matInput [matDatepicker]="picker" [(ngModel)]="rowData[column.fieldName]">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div *ngSwitchCase="'checkbox'">
+        <mat-checkbox  [(ngModel)]="rowData[column.fieldName]"></mat-checkbox>
+      </div>
+      <div *ngSwitchDefault>
+        {{rowData[column.fieldName]}}
+      </div>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<!-- <ng-container cdkColumnDef="column">
+  <mat-header-cell *cdkHeaderCellDef> header </mat-header-cell>
+  <mat-cell *cdkCellDef="let row"> {{row.column}} </mat-cell>
+</ng-container> -->
+
+<!-- <p-table class="gdeTable" [columns]="question.columns" [value]="question.value" ngDefaultControl>
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns">
@@ -8,23 +61,30 @@
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-row="rowIndex" let-columns="columns" let-col="index">
     <tr>
-        <td *ngFor="let col of columns" pEditableColumn style="text-align: center">
-          <p-cellEditor [ngSwitch]="col.controlType">
-              <ng-template  pTemplate="input">
-                  <p-dropdown *ngSwitchCase="'dropdown'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}" dataKey="key" optionLabel="value" [options]="col.options"></p-dropdown>
-                  <input      *ngSwitchCase="'text'"     [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}" style="width: 100%" type="text" pInputText>
-                  <p-calendar *ngSwitchCase="'date'"     [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
-                  <p-checkbox *ngSwitchCase="'checkbox'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}" binary="true" onchange="rulesService.test()"></p-checkbox>
-              </ng-template>
-              <ng-template  pTemplate="output">
-                  <!-- Changes to input need to be synchronized here -->
-                  <p-dropdown *ngSwitchCase="'dropdown'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}" dataKey="key" optionLabel="value" [options]="col.options"></p-dropdown>
-                  <input      *ngSwitchCase="'text'"     [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}" style="width: 100%" type="text" pInputText>
-                  <p-calendar *ngSwitchCase="'date'"     [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
-                  <p-checkbox *ngSwitchCase="'checkbox'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}" binary="true" onchange="rulesService.test()"></p-checkbox>
-              </ng-template>
-           </p-cellEditor>                        
-        </td>
+      <td *ngFor="let col of columns" pEditableColumn style="text-align: center">
+        <p-cellEditor [ngSwitch]="col.controlType">
+          <ng-template pTemplate="input">
+            <p-dropdown *ngSwitchCase="'dropdown'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}"
+              dataKey="key" optionLabel="value" [options]="col.options"></p-dropdown>
+            <input *ngSwitchCase="'text'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}"
+              style="width: 100%" type="text" pInputText>
+            <p-calendar *ngSwitchCase="'date'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}"
+              [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
+            <p-checkbox *ngSwitchCase="'checkbox'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}"
+              binary="true" onchange="rulesService.test()"></p-checkbox>
+          </ng-template>
+          <ng-template pTemplate="output">
+            <p-dropdown *ngSwitchCase="'dropdown'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}"
+              dataKey="key" optionLabel="value" [options]="col.options"></p-dropdown>
+            <input *ngSwitchCase="'text'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}"
+              style="width: 100%" type="text" pInputText>
+            <p-calendar *ngSwitchCase="'date'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}"
+              [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
+            <p-checkbox *ngSwitchCase="'checkbox'" [(ngModel)]="rowData[col.fieldName]" [ngModelOptions]="{standalone: true}" name="{{row}}-{{col.fieldName}}"
+              binary="true" onchange="rulesService.test()"></p-checkbox>
+          </ng-template>
+        </p-cellEditor>
+      </td>
     </tr>
   </ng-template>
-</p-table>      
+</p-table> -->

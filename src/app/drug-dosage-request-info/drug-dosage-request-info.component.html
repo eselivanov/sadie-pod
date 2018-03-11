@@ -1,37 +1,21 @@
 <h2>Drug Dosage Information</h2>
-<div  class="content-section implementation ui-fluid" style="width: 1200px">
-  <div class="ui-g">
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label for="inputDrug">Dose Amount</label>
-        </div>
-        <div class="ui-g-8">
-            <input id="inputDrug" type="text" pInputText>
-        </div>
-    </div>
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label for="inputDuration">Duration</label>
-        </div>
-        <div class="ui-g-8">
-            <input id="inputDuration" type="text" pInputText>
-        </div>
-    </div>
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label for="inputFrequency">Frequency</label>
-        </div>
-        <div class="ui-g-8">
-            <input id="inputFrequency" type="text" pInputText>
-        </div>
-    </div>    
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label for="inputExpectedStartDate">Expected Start Date</label>
-        </div>
-        <div class="ui-g-8">
-            <p-calendar id="inputExpectedStartDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
-        </div>
-    </div>
-  </div>
+
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="center stretch"
+    fxLayoutGap.lt-sm="auto">
+    <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+        <input matInput placeholder="Dose Amount">
+    </mat-form-field>
+    <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+        <input matInput placeholder="Duration">
+    </mat-form-field>
+    <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+        <input matInput placeholder="Frequency">
+    </mat-form-field>
+
+    <mat-form-field fxFlex="calc(33% - 10px)">
+        <input matInput [matDatepicker]="picker" placeholder="Expected Start Date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div fxFlex="calc(67% - 10px)" fxFlexFill></div>
 </div>

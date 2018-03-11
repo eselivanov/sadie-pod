@@ -5,6 +5,20 @@ import { FormsModule }                  from '@angular/forms';
 import { HttpClientModule }             from '@angular/common/http';
 import { AppComponent }                 from './app.component';
 
+// Material Components
+import {MatFormFieldModule}             from '@angular/material/form-field';
+import {MatInputModule}                 from '@angular/material/input';
+import {MatSelectModule}                from '@angular/material/select';
+import {MatCheckboxModule}              from '@angular/material/checkbox';
+import {MatDatepickerModule}            from '@angular/material/datepicker';
+import {MatCardModule}                  from '@angular/material/card';
+import {MatGridListModule}              from '@angular/material/grid-list';
+import {MatIconModule}                  from '@angular/material/icon';
+import {MatRadioModule}                 from '@angular/material/radio';
+import {MatTableModule}                 from '@angular/material/table';
+
+import {MatNativeDateModule}            from '@angular/material';
+  // import {  MatMomentDateModule}        from '@angular/material-moment-adapter';
 
 // PrimeNG Components
 import { DynamicFormComponent }         from './dynamic-form.component';
@@ -38,6 +52,9 @@ import { DrugDosageRequestInfoComponent } from './drug-dosage-request-info/drug-
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }            from './in-memory-data.service';
 
+// Flex Layout
+import {FlexLayoutModule} from "@angular/flex-layout";
+
 import { QuestionControlService }    from './question-control.service';
 import { QuestionService } from './question.service';
 import { RuleServiceService } from './rule-service.service';
@@ -47,8 +64,13 @@ import { RuleServiceService } from './rule-service.service';
   imports: [ BrowserModule, FormsModule, ReactiveFormsModule, InputTextModule, ButtonModule, DropdownModule, 
         TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, MessagesModule, 
         MessageModule, BrowserAnimationsModule, 
+
+        MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule,
+        MatDatepickerModule, MatNativeDateModule, MatCardModule, MatGridListModule,
+        MatIconModule, MatRadioModule, MatTableModule,
     
         HttpClientModule,
+        FlexLayoutModule,
     
         // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
         // and returns simulated server responses.

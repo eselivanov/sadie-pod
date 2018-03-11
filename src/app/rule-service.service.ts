@@ -6,11 +6,11 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { QuestionBase }     from './question-base';
+import { QuestionBase } from './question-base';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type': 'application/json'
   })
 };
 
@@ -19,54 +19,58 @@ export class RuleServiceService {
 
   constructor(private http: HttpClient) { }
 
-    /** POST: add a new hero to the database */
-  processRule (questions: QuestionBase<any>[]): Observable<any> {
+  /** POST: add a new hero to the database */
+  processRule(questions: QuestionBase<any>[]): Observable<any> {
     console.log('processRule()');
 
     let facts = [];
-    questions.forEach( q => { 
-      q.value.filter((elem, index, arr) =>
-        elem.drug !== undefined
-      ).map( val => {
-        return {
-          "type": "DrugHistory",
-          "drug": val.drug['key'],
-          "efficacy": val.efficacy,
-          "tolerance": val.tolerance
-        }
-      }).forEach(item => facts.push(item))
+    questions.forEach(q => {
+      if (q.value !== undefined) {
+        q.value.filter((elem, index, arr) =>
+          elem.drug !== undefined
+        ).map(val => {
+          return {
+            "type": "DrugHistory",
+            "drug": val.drug['key'],
+            "efficacy": val.efficacy,
+            "tolerance": val.tolerance
+          }
+        }).forEach(item => facts.push(item))
+      }
     });
 
-    questions.forEach( q => { 
-      q.value.filter((elem, index, arr) =>
-        elem.labTestName !== undefined
-      ).map( val => {
-        return {
-          "type": "LabResult",
-          "labResultType": val.labTestName['key'],
-          "labResultValue": val.labTestResult,
-        }
-      }).forEach(item => facts.push(item))
+    questions.forEach(q => {
+      if (q.value !== undefined) {
+        q.value.filter((elem, index, arr) =>
+          elem.labTestName !== undefined
+        ).map(val => {
+          return {
+            "type": "LabResult",
+            "labResultType": val.labTestName['key'],
+            "labResultValue": val.labTestResult,
+          }
+        }).forEach(item => facts.push(item))
+      }
     });
 
     return this.http.post<QuestionBase<any>[]>('http://localhost:9080/liberty-proj-war/rest/rules', facts, httpOptions);
-      // .pipe(
-      //   catchError(this.handleError('addHero', hero))
-      // );
+    // .pipe(
+    //   catchError(this.handleError('addHero', hero))
+    // );
   }
 
-      /** POST: add a new hero to the database */
-      getRules (): Observable<any> {
-        console.log('getRules()');
-        return this.http.get('http://localhost:9080/liberty-proj-war/rest/rules').pipe(
-          tap( // Log the result or error
-            error => console.log(error)
-          )
-        );
-          // .pipe(
-          //   catchError(this.handleError('addHero', hero))
-          // );
-      }
+  /** POST: add a new hero to the database */
+  getRules(): Observable<any> {
+    console.log('getRules()');
+    return this.http.get('http://localhost:9080/liberty-proj-war/rest/rules').pipe(
+      tap( // Log the result or error
+        error => console.log(error)
+      )
+    );
+    // .pipe(
+    //   catchError(this.handleError('addHero', hero))
+    // );
+  }
 
 
   // private handleError(error: HttpErrorResponse) {

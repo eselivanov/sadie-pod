@@ -41,6 +41,12 @@ export class InMemoryDataService implements InMemoryDbService {
         order: 1
       }),
 
+      new CheckboxQuestion({
+        key: 'takingDrug',
+        label: 'Is this patient currrently taking Happyzone?',
+        order: 1
+      }),
+
       new DateQuestion({
         key: 'birthDate',
         label: 'When were you born?',

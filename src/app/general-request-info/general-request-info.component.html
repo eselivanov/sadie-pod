@@ -1,45 +1,45 @@
-<h2>General Information</h2>
-<div  class="content-section implementation ui-fluid" style="width: 1200px">
-  <div class="ui-g">
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label for="inputClassification">Classification</label>
-        </div>
-        <div class="ui-g-8">
-          <p-dropdown id="inputClassification" [options]=classifications placeholder="--Select Classification--"></p-dropdown>
-        </div>
-    </div>
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label for="inputPriority">Priority</label>
-        </div>
-        <div class="ui-g-8">
-          <p-dropdown id="inputPriority" [options]=classifications placeholder="--Select Priority--"></p-dropdown>
-        </div>
-    </div>
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label for="inputSpecialHandling">Special Handling</label>
-        </div>
-        <div class="ui-g-8">
-          <p-dropdown id="inputSpecialHandling" [options]=classifications placeholder="--Select an Option--"></p-dropdown>
-        </div>
-    </div>
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label for="inputHospitalDischarge">Hospital Discharge</label>
-        </div>
-        <div class="ui-g-8">
-          <p-checkbox id="inputHospitalDischarge" ></p-checkbox>
-        </div>
-    </div>
-    <div class="ui-g-12 ui-md-6">
-        <div class="ui-g-4">
-          <label for="inputRequestDate">Request Date</label>
-        </div>
-        <div class="ui-g-8">
-            <p-calendar id="inputRequestDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2030" dateFormat="mm-dd-yy"></p-calendar>
-        </div>
-    </div>     
-  </div>
+<h2 matSubheader>General Information</h2>
+
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
+     fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
+  <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+    <mat-select placeholder="Classification" required>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let class of classifications" value="class.value">
+        {{ class.label }}
+      </mat-option>
+    </mat-select>
+    <!-- <input matInput placeholder="Classification"> -->
+  </mat-form-field>
+
+  <!-- TODO update with Priority source -->
+  <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+    <mat-select placeholder="Priority">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let class of classifications" value="class.value">
+        {{ class.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <!-- TODO update with Special Handling source -->
+  <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+    <mat-select placeholder="Special Handling">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let class of classifications" value="class.value">
+        {{ class.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field fxFlex="calc(50% - 10px)" fxFlexFill>
+    <input matInput [matDatepicker]="picker" placeholder="Request Date" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-checkbox fxFlex="calc(50% - 10px)" fxFlexFill>Hospital Discharge</mat-checkbox>
 </div>
+
+<!-- </mat-card> -->
