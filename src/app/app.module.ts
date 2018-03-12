@@ -1,5 +1,5 @@
-import { NgModule }                     from '@angular/core';
 import { BrowserModule }                from '@angular/platform-browser';
+import { NgModule }                     from '@angular/core';
 import { ReactiveFormsModule }          from '@angular/forms';
 import { FormsModule }                  from '@angular/forms';
 import { HttpClientModule }             from '@angular/common/http';
@@ -16,27 +16,33 @@ import {MatGridListModule}              from '@angular/material/grid-list';
 import {MatIconModule}                  from '@angular/material/icon';
 import {MatRadioModule}                 from '@angular/material/radio';
 import {MatTableModule}                 from '@angular/material/table';
+import {MatListModule}                  from '@angular/material/list';
+import {MatExpansionModule}             from '@angular/material/expansion';
 
 import {MatNativeDateModule}            from '@angular/material';
   // import {  MatMomentDateModule}        from '@angular/material-moment-adapter';
 
 // PrimeNG Components
-import { DynamicFormComponent }         from './dynamic-form.component';
-import { InputTextModule }              from 'primeng/inputtext';
-import { ButtonModule }                 from 'primeng/button';
-import { DropdownModule }               from 'primeng/dropdown';
-import { RadioButtonModule }            from 'primeng/radiobutton';
-import { CalendarModule }               from 'primeng/calendar';
-import { DataTableModule }              from 'primeng/datatable';
-import { TableModule }                  from 'primeng/table';
-import { CheckboxModule }               from 'primeng/checkbox';
-import { MessagesModule }               from 'primeng/messages';
-import { MessageModule }                from 'primeng/message';
+
+// import { InputTextModule }              from 'primeng/inputtext';
+// import { ButtonModule }                 from 'primeng/button';
+// import { DropdownModule }               from 'primeng/dropdown';
+// import { RadioButtonModule }            from 'primeng/radiobutton';
+// import { CalendarModule }               from 'primeng/calendar';
+// import { DataTableModule }              from 'primeng/datatable';
+// import { TableModule }                  from 'primeng/table';
+// import { CheckboxModule }               from 'primeng/checkbox';
+// import { MessagesModule }               from 'primeng/messages';
+// import { MessageModule }                from 'primeng/message';
 
 // PrimeNG model
 import { SelectItem }                   from 'primeng/primeng';
 
-import { DynamicFormQuestionComponent } from './dynamic-form-question.component';
+// DynamicFormComponents
+import { DynamicFormComponent }         from './component/dynamic-form/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './component/dynamic-question/dynamic-form-question.component';
+
+
 import { SelectItemPipePipe } from './select-item-pipe.pipe';
 
 
@@ -60,14 +66,18 @@ import { QuestionService } from './question.service';
 import { RuleServiceService } from './rule-service.service';
 
 
+// InputTextModule, ButtonModule, DropdownModule, 
+//         TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, MessagesModule, 
+//         MessageModule, 
+
+
+
 @NgModule({
-  imports: [ BrowserModule, FormsModule, ReactiveFormsModule, InputTextModule, ButtonModule, DropdownModule, 
-        TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, MessagesModule, 
-        MessageModule, BrowserAnimationsModule, 
+  imports: [ BrowserModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, 
 
         MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule,
         MatDatepickerModule, MatNativeDateModule, MatCardModule, MatGridListModule,
-        MatIconModule, MatRadioModule, MatTableModule,
+        MatIconModule, MatRadioModule, MatTableModule, MatListModule, MatExpansionModule,
     
         HttpClientModule,
         FlexLayoutModule,
@@ -83,7 +93,7 @@ import { RuleServiceService } from './rule-service.service';
   declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent, 
     SelectItemPipePipe, ComplexTableComponent, GeneralRequestInfoComponent, 
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
-    DrugDosageRequestInfoComponent 
+    DrugDosageRequestInfoComponent
   ],
   providers: [ QuestionControlService, QuestionService, RuleServiceService ],
   bootstrap: [ AppComponent ]

@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup }        from '@angular/forms';
 
-import { QuestionBase }     from './question-base';
+import { QuestionBase }     from '../../question-base';
 
 @Component({
   selector: 'app-question',
-  templateUrl: './dynamic-form-question.component.html'
+  templateUrl: './dynamic-form-question.component.html',
+  styleUrls: ['./dynamic-form-question.component.css']
 })
 export class DynamicFormQuestionComponent {
   @Input() question: QuestionBase<any>;

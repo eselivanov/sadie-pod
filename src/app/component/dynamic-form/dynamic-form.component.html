@@ -1,0 +1,29 @@
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="form-width">
+
+    <app-general-request-info [drugRequest]=drugRequest></app-general-request-info>
+    <app-prescriber-request-info></app-prescriber-request-info>
+    <app-patient-request-info></app-patient-request-info>
+    <app-drug-request-info [drugRequest]=drugRequest></app-drug-request-info>
+    <app-drug-dosage-request-info (loadQuestion)="reloadQuestions($event)" [drugRequest]=drugRequest></app-drug-dosage-request-info>
+
+    <div *ngIf="questions">
+      <h2>Clinical Details</h2>
+      <div *ngFor="let question of questions" class="form-row">
+        <app-question [question]="question" [form]="form" *ngIf="question.showControl"></app-question>
+      </div>
+
+      <div class="form-row">
+          <button mat-raised-button color="primary" [disabled]="!form.valid">Save</button>
+          <button mat-raised-button color="primary" (click)="test()">Click</button>
+        <!-- <p-button label="Save" type="submit" [disabled]="!form.valid"></p-button>
+        <p-button label="Click" styleClass="ui-button-info" (onClick)="test()"></p-button> -->
+      </div>
+    </div>
+  </form>
+
+  <!-- <div *ngIf="payLoad" class="form-row">
+    <strong>Saved the following values</strong><br>{{payLoad}}
+  </div> -->
+</div>
+

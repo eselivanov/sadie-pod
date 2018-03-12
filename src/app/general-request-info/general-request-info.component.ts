@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/primeng';
+
+import { DrugRequest } from '../model/drug-request';
 
 @Component({
   selector: 'app-general-request-info',
@@ -8,6 +10,7 @@ import { SelectItem } from 'primeng/primeng';
 })
 export class GeneralRequestInfoComponent implements OnInit {
 
+  @Input() drugRequest: DrugRequest;
   classifications: SelectItem[]
 
   constructor() { 

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/primeng';
+
+import { DrugRequest } from '../model/drug-request';
 
 @Component({
   selector: 'app-drug-request-info',
@@ -9,6 +11,8 @@ import { SelectItem } from 'primeng/primeng';
 export class DrugRequestInfoComponent implements OnInit {
   drugs : SelectItem[];
   indications : SelectItem[];
+
+  @Input() drugRequest: DrugRequest;
 
   constructor() { 
     this.drugs = [

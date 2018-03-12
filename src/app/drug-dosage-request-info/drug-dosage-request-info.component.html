@@ -1,4 +1,4 @@
-<h2>Drug Dosage Information</h2>
+<h2 matSubheader>Drug Dosage Information</h2>
 
 <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="center stretch"
     fxLayoutGap.lt-sm="auto">
@@ -6,7 +6,7 @@
         <input matInput placeholder="Dose Amount">
     </mat-form-field>
     <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
-        <input matInput placeholder="Duration">
+        <input matInput placeholder="Duration"  [(ngModel)]="drugRequest.questionId" (ngModelChange)="triggerLoadQuestionEvent($event)" type="number">
     </mat-form-field>
     <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
         <input matInput placeholder="Frequency">

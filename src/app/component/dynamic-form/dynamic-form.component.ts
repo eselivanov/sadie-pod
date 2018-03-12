@@ -1,15 +1,17 @@
-import { Component, Input, OnInit }  from '@angular/core';
-import { FormGroup }                 from '@angular/forms';
+import { Component, Input, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
-import { GDEForm }                   from './gdeform';
-import { QuestionBase }              from './question-base';
-import { QuestionControlService }    from './question-control.service';
-import { QuestionService } from './question.service';
+import { GDEForm } from '../../gdeform';
+import { QuestionBase } from '../../question-base';
+import { QuestionControlService } from '../../question-control.service';
+import { QuestionService } from '../../question.service';
 
 import { Observable } from 'rxjs/Observable';
-import { Subject }    from 'rxjs/Subject';
-import { of }         from 'rxjs/observable/of';
-import { RuleServiceService } from './rule-service.service';
+import { Subject } from 'rxjs/Subject';
+import { of } from 'rxjs/observable/of';
+import { RuleServiceService } from '../../rule-service.service';
+
+import { DrugRequest } from '../../model/drug-request';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -18,22 +20,40 @@ import { RuleServiceService } from './rule-service.service';
 export class DynamicFormComponent implements OnInit {
   questions: QuestionBase<any>[] = [];
   @Input() form: FormGroup;
+  drugRequest: DrugRequest;
   payLoad = '';
 
-  constructor(private qcs: QuestionControlService, private service : QuestionService, private rulesService: RuleServiceService) {  }
+  constructor(private qcs: QuestionControlService, private service: QuestionService, private rulesService: RuleServiceService) { }
+
 
   ngOnInit() {
     this.form = this.qcs.toFormGroup([]);
-    this.getQuestions();
+
+    this.drugRequest = new DrugRequest();
+    // this.getQuestions();
+
+    this.drugRequest.questionId = 4;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (let propName in changes) {
+      let chng = changes[propName];
+      let cur = JSON.stringify(chng.currentValue);
+      let prev = JSON.stringify(chng.previousValue);
+      console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+    }
   }
 
   getQuestions(): void {
-    this.service.getQuestions2(1)
-      .subscribe(gde => {
-          console.log('test' + gde.id + ' ' + gde.questions.length);
-          this.questions = gde.questions;
+    if (this.drugRequest.questionId) {
+      this.service.getQuestions(this.drugRequest.questionId)
+        .subscribe(gde => {
+          if (gde) {
+            this.questions = gde.questions;
+          }
           this.form = this.qcs.toFormGroup(this.questions);
         });
+    }
   }
 
   onSubmit() {
@@ -48,10 +68,15 @@ export class DynamicFormComponent implements OnInit {
     this.payLoad = JSON.stringify(this.form.value);
   }
 
+  reloadQuestions() {
+    this.getQuestions();
+  }
+
   test() {
+    this.drugRequest.questionId++;
     this.rulesService.processRule(this.questions).subscribe(
       q => {
-        if( q.length == 0 ) {
+        if (q.length == 0) {
           // No rules executed. Restore default visibility to all questions controls.
           this.questions.forEach((qb) => {
             qb.showControl = qb.defaultShowControl;
@@ -60,13 +85,13 @@ export class DynamicFormComponent implements OnInit {
           // Rule was executed set visibility changes.
           q.forEach(e => {
             this.questions.forEach((qb) => {
-              let found : boolean = false;
-              if(qb.questionId == e) {
+              let found: boolean = false;
+              if (qb.questionId == e) {
                 found = true;
               }
               console.log(qb.questionId + ' found ' + found);
 
-              if( found ) {
+              if (found) {
                 // The control was found, set the visibility to true.
                 qb.showControl = true;
               } else {
