@@ -1,0 +1,29 @@
+<h2 matSubheader>Drug Requested</h2>
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="center stretch"
+    fxLayoutGap.lt-sm="auto">
+
+    <mat-form-field fxFlex="calc(50% - 10px)" fxFlexFill>
+        <mat-select placeholder="Drug" required>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let drug of drugs" value="drug.value">
+                {{ drug.label }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="calc(50% - 10px)" fxFlexFill>
+        <mat-select placeholder="Indication" required>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let indication of indications" value="indication.value">
+                {{ indication.label }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="calc(50% - 10px)" fxFlexFill>
+        <input matInput placeholder="Specify Drug" required>
+    </mat-form-field>
+    <mat-form-field fxFlex="calc(50% - 10px)" fxFlexFill>
+        <input matInput placeholder="Specify Indication" required>
+    </mat-form-field>
+
+</div>

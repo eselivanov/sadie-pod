@@ -1,0 +1,113 @@
+<div>
+    <mat-toolbar color="primary" class="mat-elevation-z6 fixed-header">
+        <a class="home-link" routerLink="/">
+            <span class="app-title">SADIE</span>
+        </a>
+        <!-- This fills the remaining space of the current row -->
+        <span class="toolbar-fill-center"></span>
+
+        
+
+        <!-- <span>Right Aligned Text</span> -->
+        <!-- <mat-form-field>
+            <input matInput placeholder="Search" color="white">
+        </mat-form-field> -->
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="mat-icon-size-36">settings</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>dialpad</mat-icon>
+                <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+                <mat-icon>voicemail</mat-icon>
+                <span>Check voicemail</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>notifications_off</mat-icon>
+                <span>Disable alerts</span>
+            </button>
+        </mat-menu>
+
+
+    </mat-toolbar>
+
+    <div class="main">
+        <mat-toolbar color="primary" class="page-title">Create EAP Request</mat-toolbar>
+
+<!--
+        <button mat-raised-button color="primary" (click)="test()">Click</button>
+
+
+        <form>
+        <section>  
+            <a [routerLink]="['/admin']" class="list-group-item">Admin</a>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="wrapper">
+                        <autocomplete (selected)="autocompleteChanged($event)" (found)=foundItemsChanged($event)></autocomplete>
+                    </div>                 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div *ngIf='!!selectedValue'>
+                        <div><strong>Selected item:</strong></div>
+                        <br>
+                        <i>
+                            {{selectedValue}}
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+-->
+
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- <header>
+        <nav>
+          <ul>
+            <li><h1><a href="#">Logo</a></h1></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </nav> 
+      </header> -->
+
+
+<!-- <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+        <mat-toolbar color="primary" class="example-toolbar">
+          <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+          <h1 class="example-app-name">Responsive App</h1>
+        </mat-toolbar>
+      
+        <mat-sidenav-container class="example-sidenav-container"
+                               [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+          <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                       [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+              <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+            </mat-nav-list>
+          </mat-sidenav>
+      
+          <mat-sidenav-content>
+            <p *ngFor="let content of fillerContent">{{content}}</p>
+          </mat-sidenav-content>
+        </mat-sidenav-container>
+      </div>
+      
+      <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div> -->

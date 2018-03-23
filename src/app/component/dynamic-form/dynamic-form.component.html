@@ -1,0 +1,31 @@
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="form-width">
+    <!-- {{eaDrugRequest | json}} -->
+    <app-general-request-info [eaDrugRequest]=eaDrugRequest></app-general-request-info>
+    <!-- {{prescriber | json}} -->
+    <app-prescriber-request-info [prescriber]=prescriber></app-prescriber-request-info>
+    <!-- {{patient | json}} -->
+    <app-patient-request-info [patient]=patient></app-patient-request-info>
+    <app-drug-request-info [drugRequest]=drugRequest></app-drug-request-info>
+    <app-drug-dosage-request-info (loadQuestion)="reloadQuestions($event)" [drugRequest]=drugRequest></app-drug-dosage-request-info>
+
+    <div *ngIf="questions">
+      <h2>Clinical Details</h2>
+      <div *ngFor="let question of questions" class="form-row">
+        <app-question [question]="question" [form]="form" *ngIf="question.showControl"></app-question>
+      </div>
+
+      <div class="form-row">
+          <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">Save</button>
+          <button mat-raised-button color="primary" (click)="callProcessRulesService()">Click</button>
+        <!-- <p-button label="Save" type="submit" [disabled]="!form.valid"></p-button>
+        <p-button label="Click" styleClass="ui-button-info" (onClick)="test()"></p-button> -->
+      </div>
+    </div>
+  </form>
+
+  <!-- <div *ngIf="payLoad" class="form-row">
+    <strong>Saved the following values</strong><br>{{payLoad}}
+  </div> -->
+</div>
+

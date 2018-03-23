@@ -1,0 +1,87 @@
+<!-- Display for large devices -->
+<h3 matSubheader>{{question.questionText}}</h3>
+<div fxHide.lt-md>
+  <mat-table [dataSource]="dataSource">
+    <ng-container *ngFor="let column of question.columns" [matColumnDef]="column.fieldName">
+      <mat-header-cell *matHeaderCellDef> {{column.header}} </mat-header-cell>
+      <mat-cell *matCellDef="let rowData" [ngSwitch]="column.controlType">
+          <mat-form-field *ngSwitchCase="'dropdown'">
+          <mat-select [compareWith]="compareFn" [(ngModel)]="rowData[column.fieldName]">
+            <mat-option *ngFor="let option of column.options" [value]="option">
+              {{option.value}}
+            </mat-option>
+          </mat-select>
+          </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="'text'">
+          <input matInput [(ngModel)]="rowData[column.fieldName]">
+        </mat-form-field>
+
+        <mat-form-field *ngSwitchCase="'date'">
+          <input matInput [matDatepicker]="picker" [(ngModel)]="rowData[column.fieldName]">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div *ngSwitchCase="'checkbox'">
+          <mat-checkbox [(ngModel)]="rowData[column.fieldName]"></mat-checkbox>
+        </div>
+        <div *ngSwitchDefault>
+          {{rowData[column.fieldName]}}
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+<!-- Display for mobile -->
+<div fxHide.md fxHide.gt-md>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of question.value">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <ng-container *ngIf="item[question.primaryIdFieldName].value !== undefined">
+            {{item[question.primaryIdFieldName].value}}
+          </ng-container>
+          <ng-container *ngIf="item[question.primaryIdFieldName].value === undefined">
+              {{item[question.primaryIdFieldName]}}
+            </ng-container>
+        </mat-panel-title>
+        <mat-panel-description>
+          {{question.hintText}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div fxLayout="column" fxLayoutAlign="start stretch">
+        <ng-container *ngFor="let column of question.columns" [ngSwitch]="column.controlType">
+          <mat-form-field *ngSwitchCase="'dropdown'" >
+            <mat-select [compareWith]="compareFn" [(ngModel)]="item[column.fieldName]" [placeholder]="column.header"
+              fxFlex="100%" fxFlexFill>
+              <mat-option *ngFor="let option of column.options" [value]="option">
+                {{option.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field *ngSwitchCase="'text'">
+            <input matInput [(ngModel)]="item[column.fieldName]" [placeholder]="column.header">
+          </mat-form-field>
+
+          <mat-form-field *ngSwitchCase="'date'">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="item[column.fieldName]" [placeholder]="column.header">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <div *ngSwitchCase="'checkbox'">
+            <mat-checkbox [(ngModel)]="item[column.fieldName]">{{column.header}}</mat-checkbox>
+          </div>
+          <div *ngSwitchDefault>
+            {{item[column.fieldName]}}
+          </div>
+        </ng-container>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

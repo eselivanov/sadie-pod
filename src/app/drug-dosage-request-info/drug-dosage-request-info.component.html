@@ -1,0 +1,21 @@
+<h2 matSubheader>Drug Dosage Information</h2>
+
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="center stretch"
+    fxLayoutGap.lt-sm="auto">
+    <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+        <input matInput placeholder="Dose Amount">
+    </mat-form-field>
+    <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+        <input matInput placeholder="Duration"  [(ngModel)]="drugRequest.questionId" (ngModelChange)="triggerLoadQuestionEvent($event)" type="number">
+    </mat-form-field>
+    <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+        <input matInput placeholder="Frequency">
+    </mat-form-field>
+
+    <mat-form-field fxFlex="calc(33% - 10px)">
+        <input matInput [matDatepicker]="picker" placeholder="Expected Start Date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div fxFlex="calc(67% - 10px)" fxFlexFill></div>
+</div>

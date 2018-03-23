@@ -1,0 +1,66 @@
+<div [formGroup]="form">
+  <!-- <label [attr.for]="question.key">{{question.questionText}}</label> -->
+
+  <div [ngSwitch]="question.inputType" fxLayout="column" fxLayoutAlign="center stretch">
+    <!-- Literal components for Text, Integer, Decimal, Textarea -->
+    <div *ngSwitchCase="'literal'">
+      <mat-form-field *ngIf="question.controlType == 'text'" fxFlex>
+        <input matInput placeholder="{{question.questionText}}" [formControlName]="question.key" [id]="question.key" type="text"
+          [required]="question['required']">
+        <mat-hint align="start">{{question.hintText}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="question.controlType == 'integer'" fxFlex>
+        <input matInput placeholder="{{question.questionText}}" [formControlName]="question.key" [id]="question.key" type="number"
+          [required]="question['required']">
+        <mat-hint align="start">{{question.hintText}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="question.controlType == 'decimal'" fxFlex>
+        <input matInput placeholder="{{question.questionText}}" [formControlName]="question.key" [id]="question.key" type="number"
+          [required]="question['required']">
+        <mat-hint align="start">{{question.hintText}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="question.controlType == 'textarea'" fxFlex>
+        <textarea matInput placeholder="{{question.questionText}}" [formControlName]="question.key" [id]="question.key" [required]="question['required']">
+        </textarea>
+        <mat-hint align="start">{{question.hintText}}</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <!-- Selection components for Dropdown, Radio, Checkbox, Multiselect -->
+    <div *ngSwitchCase="'selection'">
+      <mat-form-field *ngIf="question.controlType == 'dropdown'" fxFlex>
+        <mat-select placeholder="{{question.questionText}}" [formControlName]="question.key" [id]="question.key" [required]="question['required']">
+          <mat-option *ngFor="let option of question['options']" [value]="option">
+            {{ option.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-checkbox *ngIf="question.controlType == 'checkbox'" [formControlName]="question.key" [id]="question.key" fxFlex>{{question.questionText}}</mat-checkbox>
+
+      <div *ngIf="question.controlType == 'radio'" fxFlex>
+        <label>{{question.questionText}}</label>
+        <br />
+        <mat-radio-group [formControlName]="question.key" [id]="question.key" [required]="question['required']" class="radio-group-vertical">
+          <mat-radio-button *ngFor="let option of question['options']" [value]="option" class="radio-button">
+            {{option.value}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <mat-form-field *ngSwitchCase="'date'" fxFlex>
+        <input matInput [matDatepicker]="picker" placeholder="{{question.questionText}}" [formControlName]="question.key">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <app-complex-table  *ngSwitchCase="'complex'" [question]="question" fxFlex></app-complex-table>
+
+  </div>
+
+  <!-- <div class="errorMessage" *ngIf="!isValid">{{question.questionText}} is required</div> -->
+</div>
