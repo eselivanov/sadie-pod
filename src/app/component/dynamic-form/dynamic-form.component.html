@@ -1,9 +1,11 @@
 <div>
   <form (ngSubmit)="onSubmit()" [formGroup]="form" class="form-width">
-
-    <app-general-request-info [drugRequest]=drugRequest></app-general-request-info>
-    <app-prescriber-request-info></app-prescriber-request-info>
-    <app-patient-request-info></app-patient-request-info>
+    <!-- {{eaDrugRequest | json}} -->
+    <app-general-request-info [eaDrugRequest]=eaDrugRequest></app-general-request-info>
+    <!-- {{prescriber | json}} -->
+    <app-prescriber-request-info [prescriber]=prescriber></app-prescriber-request-info>
+    <!-- {{patient | json}} -->
+    <app-patient-request-info [patient]=patient></app-patient-request-info>
     <app-drug-request-info [drugRequest]=drugRequest></app-drug-request-info>
     <app-drug-dosage-request-info (loadQuestion)="reloadQuestions($event)" [drugRequest]=drugRequest></app-drug-dosage-request-info>
 
@@ -14,8 +16,8 @@
       </div>
 
       <div class="form-row">
-          <button mat-raised-button color="primary" [disabled]="!form.valid">Save</button>
-          <button mat-raised-button color="primary" (click)="test()">Click</button>
+          <button mat-raised-button color="primary" [disabled]="!form.valid" type="submit">Save</button>
+          <button mat-raised-button color="primary" (click)="callProcessRulesService()">Click</button>
         <!-- <p-button label="Save" type="submit" [disabled]="!form.valid"></p-button>
         <p-button label="Click" styleClass="ui-button-info" (onClick)="test()"></p-button> -->
       </div>

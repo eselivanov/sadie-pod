@@ -18,8 +18,12 @@ import {MatRadioModule}                 from '@angular/material/radio';
 import {MatTableModule}                 from '@angular/material/table';
 import {MatListModule}                  from '@angular/material/list';
 import {MatExpansionModule}             from '@angular/material/expansion';
+import {MatSidenavModule}               from '@angular/material/sidenav';
+import {MatToolbarModule}               from '@angular/material/toolbar';
+import {MatButtonModule}                from '@angular/material/button';
+import {MatMenuModule}                  from '@angular/material/menu';
 
-import {MatNativeDateModule}            from '@angular/material';
+import {MatNativeDateModule, MatAutocomplete, MatAutocompleteModule}            from '@angular/material';
   // import {  MatMomentDateModule}        from '@angular/material-moment-adapter';
 
 // PrimeNG Components
@@ -56,20 +60,24 @@ import { DrugDosageRequestInfoComponent } from './drug-dosage-request-info/drug-
 
 // In Memory Data Web API / Memory Service
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }            from './in-memory-data.service';
+import { InMemoryDataService }            from './service/in-memory-data.service';
 
 // Flex Layout
 import {FlexLayoutModule} from "@angular/flex-layout";
 
 import { QuestionControlService }    from './question-control.service';
-import { QuestionService } from './question.service';
-import { RuleServiceService } from './rule-service.service';
+import { QuestionService } from './service/question.service';
+import { RuleServiceService } from './service/rule-service.service';
+import { CodeTableService } from './service/code-table.service';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { ElasticSearchService } from './service/elastic-search.service';
+import { AutoCompleteComponent } from './component/auto-complete/auto-complete.component';
 
 
 // InputTextModule, ButtonModule, DropdownModule, 
 //         TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, MessagesModule, 
 //         MessageModule, 
-
 
 
 @NgModule({
@@ -78,7 +86,7 @@ import { RuleServiceService } from './rule-service.service';
         MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule,
         MatDatepickerModule, MatNativeDateModule, MatCardModule, MatGridListModule,
         MatIconModule, MatRadioModule, MatTableModule, MatListModule, MatExpansionModule,
-    
+        MatSidenavModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatAutocompleteModule,
         HttpClientModule,
         FlexLayoutModule,
     
@@ -87,15 +95,17 @@ import { RuleServiceService } from './rule-service.service';
         // Remove it when a real server is ready to receive requests.
         HttpClientInMemoryWebApiModule.forRoot(
           InMemoryDataService, { dataEncapsulation: false, passThruUnknownUrl: true }
-        )
+        ),
+    
+        AppRoutingModule, RouterModule,
       
       ],
   declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent, 
     SelectItemPipePipe, ComplexTableComponent, GeneralRequestInfoComponent, 
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
-    DrugDosageRequestInfoComponent
+    DrugDosageRequestInfoComponent, AutoCompleteComponent
   ],
-  providers: [ QuestionControlService, QuestionService, RuleServiceService ],
+  providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

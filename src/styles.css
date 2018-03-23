@@ -11,17 +11,18 @@ h2, h3 {
   font-family: Arial, Helvetica, sans-serif;
 }
 body {
-  margin: 2em;
+  margin: 0;
+  padding: 0;
 }
-body, input[text], button {
-  color: #888;
+body {
+  /* color: #888; */
   font-family: Cambria, Georgia;
 }
 a {
   cursor: pointer;
   cursor: hand;
 }
-button {
+/* button {
   font-family: Arial;
   background-color: #eee;
   border: none;
@@ -37,10 +38,10 @@ button:disabled {
   background-color: #eee;
   color: #aaa;
   cursor: auto;
-}
+} */
 
 /* Navigation link styles */
-nav a {
+/* nav a {
   padding: 5px 10px;
   text-decoration: none;
   margin-right: 10px;
@@ -58,7 +59,7 @@ nav a:hover {
 }
 nav a.active {
   color: #039be5;
-}
+} */
 
 /* everywhere else */
 * {
@@ -75,12 +76,6 @@ nav a.active {
 
 .align-right {
   text-align: right;
-}
-
-.form-width {
-  /* min-width: 150px;
-  max-width: 500px;
-  width: 100%; */
 }
 
 .full-width {

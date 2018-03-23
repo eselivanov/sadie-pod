@@ -1,13 +1,13 @@
 import { Injectable }       from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { TableQuestion }    from './question-table';
-import { DateQuestion }     from './question-date';
-import { SelectionQuestion } from './question-selection';
-import { QuestionBase }     from './question-base';
-import { GDEForm }          from './gdeform';
-import { LiteralQuestion }  from './question-literal';
-import { GDEComponentType } from './gde.componenttype.enum';
+import { TableQuestion }    from '../question-table';
+import { DateQuestion }     from '../question-date';
+import { SelectionQuestion } from '../question-selection';
+import { QuestionBase }     from '../question-base';
+import { GDEForm }          from '../gdeform';
+import { LiteralQuestion }  from '../question-literal';
+import { GDEComponentType } from '../gde.componenttype.enum';
 
 
 import { Observable } from 'rxjs/Observable';

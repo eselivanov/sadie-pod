@@ -4,35 +4,42 @@ import { FormGroup } from '@angular/forms';
 import { GDEForm } from '../../gdeform';
 import { QuestionBase } from '../../question-base';
 import { QuestionControlService } from '../../question-control.service';
-import { QuestionService } from '../../question.service';
+import { QuestionService } from '../../service/question.service';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { of } from 'rxjs/observable/of';
-import { RuleServiceService } from '../../rule-service.service';
+import { RuleServiceService } from '../../service/rule-service.service';
 
 import { DrugRequest } from '../../model/drug-request';
+import { Patient } from '../../model/patient';
+import { Prescriber } from '../../model/prescriber';
+import { EADrugRequest } from '../../model/ea-drug-request';
 
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html'
 })
 export class DynamicFormComponent implements OnInit {
-  questions: QuestionBase<any>[] = [];
   @Input() form: FormGroup;
+  questions: QuestionBase<any>[] = [];
   drugRequest: DrugRequest;
+  prescriber: Prescriber;
+  patient: Patient;
+  eaDrugRequest: EADrugRequest;
   payLoad = '';
 
   constructor(private qcs: QuestionControlService, private service: QuestionService, private rulesService: RuleServiceService) { }
 
-
   ngOnInit() {
     this.form = this.qcs.toFormGroup([]);
-
+    this.eaDrugRequest = new EADrugRequest();
     this.drugRequest = new DrugRequest();
-    // this.getQuestions();
-
+    this.patient = new Patient();
+    this.prescriber = new Prescriber();
     this.drugRequest.questionId = 4;
+
+    this.patient.firstName = "Hello World!";
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -57,14 +64,6 @@ export class DynamicFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.questions.forEach(q => {
-    //   q.showControl = true;
-    // });
-    this.rulesService.getRules().subscribe(t => {
-      console.log('test');
-    });
-    // this.rulesService.processRule(this.questions)
-    //   .subscribe(response => console.log(response));
     this.payLoad = JSON.stringify(this.form.value);
   }
 
@@ -72,8 +71,7 @@ export class DynamicFormComponent implements OnInit {
     this.getQuestions();
   }
 
-  test() {
-    this.drugRequest.questionId++;
+  callProcessRulesService() {
     this.rulesService.processRule(this.questions).subscribe(
       q => {
         if (q.length == 0) {
@@ -84,7 +82,7 @@ export class DynamicFormComponent implements OnInit {
         } else {
           // Rule was executed set visibility changes.
           q.forEach(e => {
-            this.questions.forEach((qb) => {
+            this.questions.forEach(qb => {
               let found: boolean = false;
               if (qb.questionId == e) {
                 found = true;

@@ -1,45 +1,41 @@
 <h2 matSubheader>General Information</h2>
 
-<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
-     fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch"
+  fxLayoutGap.lt-sm="auto">
   <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
-    <mat-select placeholder="Classification" required>
-      <mat-option>None</mat-option>
-      <mat-option *ngFor="let class of classifications" value="class.value">
-        {{ class.label }}
-      </mat-option>
-    </mat-select>
-    <!-- <input matInput placeholder="Classification"> -->
-  </mat-form-field>
-
-  <!-- TODO update with Priority source -->
-  <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
-    <mat-select placeholder="Priority">
-      <mat-option>None</mat-option>
-      <mat-option *ngFor="let class of classifications" value="class.value">
-        {{ class.label }}
+    <mat-select [(ngModel)]="eaDrugRequest.classication" placeholder="Classification" required>
+      <mat-option value="undefined">None</mat-option>
+      <mat-option *ngFor="let class of classifications" [value]="class">
+        {{ class.value }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-
-  <!-- TODO update with Special Handling source -->
   <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
-    <mat-select placeholder="Special Handling">
-      <mat-option>None</mat-option>
-      <mat-option *ngFor="let class of classifications" value="class.value">
-        {{ class.label }}
+    <mat-select [(ngModel)]="eaDrugRequest.requestPriority" placeholder="Priority">
+      <mat-option value="undefined">None</mat-option>
+      <mat-option *ngFor="let priority of priorities" [value]="priority">
+        {{ priority.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+    <mat-select [(ngModel)]="eaDrugRequest.specialHandling" placeholder="Special Handling">
+      <mat-option value="undefined">None</mat-option>
+      <mat-option *ngFor="let special of specialHandling" [value]="special">
+        {{ special.value }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field fxFlex="calc(50% - 10px)" fxFlexFill>
-    <input matInput [matDatepicker]="picker" placeholder="Request Date" required>
+    <input [(ngModel)]="eaDrugRequest.requestDate" matInput [matDatepicker]="picker" placeholder="Request Date" required>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <mat-checkbox fxFlex="calc(50% - 10px)" fxFlexFill>Hospital Discharge</mat-checkbox>
+  <mat-checkbox [(ngModel)]="eaDrugRequest.hospitalDischarge" fxFlex="calc(50% - 10px)" fxFlexFill>Hospital Discharge</mat-checkbox>
 </div>
 
 <!-- </mat-card> -->

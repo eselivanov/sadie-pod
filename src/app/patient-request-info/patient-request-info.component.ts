@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Patient } from '../model/patient';
 
 @Component({
   selector: 'app-patient-request-info',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-request-info.component.css']
 })
 export class PatientRequestInfoComponent implements OnInit {
+  @Input() patient: Patient;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  
 }

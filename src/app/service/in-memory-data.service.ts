@@ -1,18 +1,55 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
-import { TableQuestion } from './question-table';
-import { DateQuestion } from './question-date';
-import { SelectionQuestion } from './question-selection';
-import { QuestionBase } from './question-base';
-import { LiteralQuestion } from './question-literal';
-import { GDEComponentType } from './gde.componenttype.enum';
-import { DrugHistory } from './model/drug-history';
-import { KeyPair } from './model/key-pair';
+import { TableQuestion } from '../question-table';
+import { DateQuestion } from '../question-date';
+import { SelectionQuestion } from '../question-selection';
+import { QuestionBase } from '../question-base';
+import { LiteralQuestion } from '../question-literal';
+import { GDEComponentType } from '../gde.componenttype.enum';
+import { DrugHistory } from '../model/drug-history';
+import { KeyPair } from '../model/key-pair';
 
 export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
     const gdeforms = [];
+    const classification = [
+      {key: "Amendment", value: "Amendment"},
+      {key: "Appeal", value: "Appeal"},
+      {key: "Duplicate", value: "Duplicate"},
+      {key: "New", value: "New"},
+      {key: "Renewal", value: "Renewal"}
+    ];
+
+    const priority = [
+      {key: "1", value: "Stat-Rush"},
+      {key: "2", value: "Rush"},
+      {key: "3", value: "Biologics"},
+      {key: "4", value: "Semi-Rush"},
+      {key: "5", value: "Non-Rush"},
+      {key: "6", value: "Compassionate"},
+      {key: "7", value: "2nd+ Appeal"},
+      {key: "8", value: "RSV"},
+      {key: "9", value: "Cancer drugs"},
+      {key: "10", value: "Hepatitis C drugs"},
+      {key: "11", value: "OxyNEO"},
+      {key: "12", value: "Special Case"},
+      {key: "13", value: "Drugs for Rare Diseases"},
+      {key: "14", value: "MISC 1"},
+      {key: "15", value: "MISC 2"},
+      {key: "16", value: "OHIP+ Stat-Rush"},
+      {key: "17", value: "OHIP+ Rush"},
+      {key: "18", value: "OHIP+ Biologics"},
+      {key: "19", value: "OHIP+ Non-Rush"}
+    ];
+
+    const specialHandling = [
+      {key: "1", value: "Special Handling #1"},
+      {key: "2", value: "Special Handling #2"},
+      {key: "3", value: "Special Handling #3"},
+      {key: "4", value: "Special Handling #4"},
+      {key: "5", value: "Special Handling #5"}
+    ];
 
     let questions: QuestionBase<any>[] = [
 
@@ -63,8 +100,8 @@ export class InMemoryDataService implements InMemoryDbService {
         hintText: 'Please enter lab result information',
         type: 'table',
         value: [
-          { labResultType: { key: 'LDL', value: 'LDL' }, labResultValue: 5.0, startDate: new Date(), endDate: new Date(), efficacy: true, tolerance: false },
-          { labResultType: { key: 'Mg', value: 'Mg' }, labResultValue: 100, startDate: new Date(), endDate: new Date(), efficacy: false, tolerance: false }
+          { type: 'LabResult', labResultType: { key: 'LDL', value: 'LDL' }, labResultValue: 5.0, startDate: new Date(), endDate: new Date(), efficacy: true },
+          { type: 'LabResult', labResultType: { key: 'Mg', value: 'Mg' }, labResultValue: 100, startDate: new Date(), endDate: new Date(), efficacy: false }
         ],
         columns: [
           {
@@ -171,8 +208,8 @@ export class InMemoryDataService implements InMemoryDbService {
           primaryIdFieldName: 'labResultType',
           hintText: 'Please enter lab result information',
           value: [
-            { labResultType: { key: 'LDL', value: 'LDL' }, labResultValue: 5.0, startDate: new Date(), endDate: new Date(), efficacy: true, tolerance: false },
-            { labResultType: { key: 'Mg', value: 'Mg' }, labResultValue: 100, startDate: new Date(), endDate: new Date(), efficacy: false, tolerance: false }
+            { type: 'LabResult', labResultType: { key: 'LDL', value: 'LDL' }, labResultValue: 5.0, startDate: new Date(), endDate: new Date(), efficacy: true },
+            { type: 'LabResult', labResultType: { key: 'Mg', value: 'Mg' }, labResultValue: 100, startDate: new Date(), endDate: new Date(), efficacy: false }
           ],
           columns: [
             {
@@ -216,10 +253,10 @@ export class InMemoryDataService implements InMemoryDbService {
           questionText: 'Drug History',
           type: 'table',
           value: [
-            { drug: { key: 'Happyzone', value: 'Happyzone' }, efficacy: false, tolerance: false },
-            { drug: { key: 'Merryzone', value: 'Merryzone' }, efficacy: false, tolerance: false },
-            { drug: { key: 'Gladzone', value: 'Gladzone' }, efficacy: false, tolerance: false },
-            { drug: { key: 'Stonedzone', value: 'Stonedzone' }, efficacy: false, tolerance: false }
+            { type: 'DrugHistory', drug: { key: 'Happyzone', value: 'Happyzone' }, efficacy: false, tolerance: false },
+            { type: 'DrugHistory', drug: { key: 'Merryzone', value: 'Merryzone' }, efficacy: false, tolerance: false },
+            { type: 'DrugHistory', drug: { key: 'Gladzone', value: 'Gladzone' }, efficacy: false, tolerance: false },
+            { type: 'DrugHistory', drug: { key: 'Stonedzone', value: 'Stonedzone' }, efficacy: false, tolerance: false }
           ],
           columns: [
             {
@@ -243,8 +280,8 @@ export class InMemoryDataService implements InMemoryDbService {
           questionText: 'Lab History',
           type: 'table',
           value: [
-            { labTestName: { key: 'HgB', value: 'HgB' }, tolerance: false },
-            { labTestName: { key: 'Creatinin', value: 'Creatinin' }, tolerance: false }
+            { type: 'LabResult', labTestName: { key: 'HgB', value: 'HgB' } },
+            { type: 'LabResult', labTestName: { key: 'Creatinin', value: 'Creatinin' } }
           ],
           columns: [
             {
@@ -266,7 +303,7 @@ export class InMemoryDataService implements InMemoryDbService {
           showControl: false,
           defaultShowControl: false,
           value: [
-            { medicalCondition: { key: 'Seizures', value: 'Seizures' }, tolerance: false }
+            { type: 'MedicalCondition', medicalCondition: { key: 'Seizures', value: 'Seizures' } }
           ],
           columns: [
             {
@@ -373,10 +410,10 @@ export class InMemoryDataService implements InMemoryDbService {
           hintText: 'Please enter drug history information',
           type: 'table',
           value: [
-            { drug: { key: 'Happyzone', value: 'Happyzone' }, efficacy: false, tolerance: false },
-            { drug: { key: 'Merryzone', value: 'Merryzone' }, efficacy: false, tolerance: false },
-            { drug: { key: 'Gladzone', value: 'Gladzone' }, efficacy: false, tolerance: false },
-            { drug: { key: 'Stonedzone', value: 'Stonedzone' }, efficacy: false, tolerance: false }
+            { type: 'DrugHistory', drug: { key: 'Happyzone', value: 'Happyzone' }, efficacy: false, tolerance: false },
+            { type: 'DrugHistory', drug: { key: 'Merryzone', value: 'Merryzone' }, efficacy: false, tolerance: false },
+            { type: 'DrugHistory', drug: { key: 'Gladzone', value: 'Gladzone' }, efficacy: false, tolerance: false },
+            { type: 'DrugHistory', drug: { key: 'Stonedzone', value: 'Stonedzone' }, efficacy: false, tolerance: false }
           ],
           columns: [
             {
@@ -401,8 +438,8 @@ export class InMemoryDataService implements InMemoryDbService {
           hintText: 'Please enter lab result information',
           type: 'table',
           value: [
-            { labTestName: { key: 'HgB', value: 'HgB' }, tolerance: false },
-            { labTestName: { key: 'Creatinin', value: 'Creatinin' }, tolerance: false }
+            { type: 'LabResult', labTestName: { key: 'HgB', value: 'HgB' } },
+            { type: 'LabResult', labTestName: { key: 'Creatinin', value: 'Creatinin' } }
           ],
           columns: [
             {
@@ -424,7 +461,7 @@ export class InMemoryDataService implements InMemoryDbService {
           showControl: false,
           defaultShowControl: false,
           value: [
-            { medicalCondition: { key: 'Seizures', value: 'Seizures' }, tolerance: false }
+            { type: 'MedicalCondition', medicalCondition: { key: 'Seizures', value: 'Seizures' }, tolerance: false }
           ],
           columns: [
             {
@@ -448,6 +485,6 @@ export class InMemoryDataService implements InMemoryDbService {
       ]
     });
 
-    return { gdeforms };
+    return { gdeforms, classification, priority, specialHandling };
   }
 }

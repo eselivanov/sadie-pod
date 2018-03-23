@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { QuestionBase }     from '../question-base';
 import { TableQuestion }    from '../question-table';
-import { RuleServiceService } from '../rule-service.service';
+import { RuleServiceService } from '../service/rule-service.service';
 import { MatTableDataSource } from '@angular/material';
 import { KeyPair }            from '../model/key-pair';
 
