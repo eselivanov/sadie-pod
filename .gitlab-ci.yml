@@ -1,3 +1,4 @@
+
 image: trion/ng-cli-karma
 
 cache:
@@ -6,7 +7,7 @@ cache:
 
 deploy_stage:
   stage: deploy
-  environment: Stage
+  environment: Staging
   only:
     - master
   script:
@@ -14,5 +15,21 @@ deploy_stage:
     - npm install
     - ./node_modules/@angular/cli/bin/ng test --progress false --single-run=true --watch=false
     - ./node_modules/@angular/cli/bin/ng e2e --progress false --watch=false
-    - ./node_modules/@angular/cli/bin/ng build --progress false --prod --base-href XXX-stage.surge.sh
-    - ./node_modules/.bin/surge -p dist/ --domain XXX-stage.surge.sh
+    - ./node_modules/@angular/cli/bin/ng build --progress false --prod 
+    - cd dist/
+    - ls
+
+deploy_production:
+  stage: deploy
+  environment: Production
+  only:
+    - tags
+  script:
+    - rm ./package-lock.json
+    - npm install
+    - ./node_modules/@angular/cli/bin/ng test --progress false --single-run=true  --watch=false
+    - ./node_modules/@angular/cli/bin/ng e2e --progress false --watch=false
+    - ./node_modules/@angular/cli/bin/ng build --progress false --prod 
+    - cd dist/
+    - ls
+   
