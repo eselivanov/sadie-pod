@@ -7,11 +7,7 @@
     <!-- {{patient | json}} -->
     <app-patient-request-info [patient]=patient></app-patient-request-info>
     <app-drug-request-info [drugRequest]=drugRequest></app-drug-request-info>
-<<<<<<< HEAD
     <app-drug-dosage-request-info (loadQuestion)="reloadQuestions()" [drugRequest]=drugRequest></app-drug-dosage-request-info>
-=======
-    <app-drug-dosage-request-info (loadQuestion)="reloadQuestions($event)" [drugRequest]=drugRequest></app-drug-dosage-request-info>
->>>>>>> origin
 
     <div *ngIf="questions">
       <h2>Clinical Details</h2>
