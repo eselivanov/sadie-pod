@@ -18,7 +18,7 @@ RUN $(npm bin)/ng build --prod
 FROM nginx:1.13.10-alpine
 
 # Copy our nginx config over the default.conf
-COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Remove the default nginx site
 RUN rm -rf /usr/share/nginx/html/*
