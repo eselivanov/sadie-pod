@@ -7,6 +7,13 @@ import {
 
 import { Subject, Observable } from "rxjs";
 import { ElasticSearchService } from "../../service/elastic-search.service";
+//add .map function
+
+//import 'rxjs/add/operator/map';
+//import 'rxjs/add/operator/debounceTime';
+//import 'rxjs/add/operator/distinctUntilChanged';
+//import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/catch';
 
 @Component({
     selector: "autocomplete",

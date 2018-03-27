@@ -10,7 +10,7 @@ import { AutoCompleteComponent } from "./component/auto-complete/auto-complete.c
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
-
+  title = 'SADIE POT';
   
   constructor(private es: ElasticSearchService) {}
 

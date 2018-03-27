@@ -1,10 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CodeTableService } from './code-table.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CodeTableService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule ],
       providers: [CodeTableService]
     });
   });

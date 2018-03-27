@@ -1,11 +1,12 @@
 <div>
     <mat-toolbar color="primary" class="mat-elevation-z6 fixed-header">
         <a class="home-link" routerLink="/">
-            <span class="app-title">SADIE</span>
+            <span class="app-title">{{ title }}</span>
         </a>
         <!-- This fills the remaining space of the current row -->
         <span class="toolbar-fill-center"></span>
 
+        
         
 
         <!-- <span>Right Aligned Text</span> -->
@@ -34,8 +35,8 @@
     </mat-toolbar>
 
     <div class="main">
-        <mat-toolbar color="primary" class="page-title">Create EAP Request</mat-toolbar>
-
+        <mat-toolbar color="primary" class="page-title" routerLink="/gde" >Create EAP Request</mat-toolbar>
+       
 <!--
         <button mat-raised-button color="primary" (click)="test()">Click</button>
 
@@ -68,6 +69,10 @@
 -->
 
         <div class="content">
+                <nav>
+                        <a routerLink="/dashboard">Dashboard</a>
+                        <a routerLink="/gde">GDE</a>
+                      </nav>   
             <router-outlet></router-outlet>
         </div>
     </div>
