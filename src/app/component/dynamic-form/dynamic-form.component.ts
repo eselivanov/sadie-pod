@@ -40,7 +40,6 @@ export class DynamicFormComponent implements OnInit {
     this.drugRequest.questionId = 4;
 
     this.patient.firstName = "Hello World!";
-    this.patient.healthNumber = "1234567890";
   }
 
   ngOnChanges(changes: SimpleChanges) {
