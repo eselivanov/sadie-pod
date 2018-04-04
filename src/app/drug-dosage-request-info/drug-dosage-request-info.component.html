@@ -6,6 +6,8 @@
         <input matInput placeholder="Dose Amount">
     </mat-form-field>
     <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
+        <!-- ng test is causing an error for questionId, when removing round 
+            brackets and adding optional it breaks quesiton load -->
         <input matInput placeholder="Duration"  [(ngModel)]="drugRequest.questionId" (ngModelChange)="triggerLoadQuestionEvent($event)" type="number">
     </mat-form-field>
     <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>

@@ -18,6 +18,7 @@ import { QuestionService } from '../service/question.service';
 import { RuleServiceService } from '../service/rule-service.service';
 import { CodeTableService } from '../service/code-table.service';
 import { ElasticSearchService } from '../service/elastic-search.service';
+import { PatientService } from '../service/patient.service';
 
 // DynamicFormComponents
 import { DynamicFormComponent }         from '../component/dynamic-form/dynamic-form.component';
@@ -73,7 +74,7 @@ describe('PatientRequestInfoComponent', () => {
         ReactiveFormsModule, MatNativeDateModule, MatAutocompleteModule, BrowserAnimationsModule,
         HttpClientModule],
       providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService,
-          ElasticSearchService ],
+          ElasticSearchService, PatientService ],
       declarations: [ PatientRequestInfoComponent, GeneralRequestInfoComponent, DrugRequestInfoComponent, DrugDosageRequestInfoComponent, ComplexTableComponent, AppComponent,
         DynamicFormComponent,
         DynamicFormQuestionComponent,

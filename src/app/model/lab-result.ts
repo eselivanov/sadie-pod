@@ -1,5 +1,14 @@
+import { KeyPair } from "./key-pair";
+
 export class LabResult {
-  labTestName: string;
+  //changing labTestName to labResultType to match liberty proj
+  labResultType: KeyPair;
   labTestDate: Date;
-  labTestResult: string;
+  labResultValue: string;
+
+  constructor(
+    labResultType?: KeyPair,
+  labTestDate?: Date,
+  labResultValue?: string
+  ) {}
 }

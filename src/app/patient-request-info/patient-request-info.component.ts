@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { PatientService } from '../service/patient.service';
 import { Patient } from '../model/patient';
 
 @Component({
@@ -9,11 +9,15 @@ import { Patient } from '../model/patient';
 })
 export class PatientRequestInfoComponent implements OnInit {
   @Input() patient: Patient;
-
-  constructor() { }
+  patients: Patient[];
+  constructor(private patientService: PatientService) { }
 
   ngOnInit() {
+    this.getPatients();
   }
-
   
+  getPatients(): void {
+    this.patientService.getPatients()
+        .subscribe(patients => this.patients = patients);
+  }
 }

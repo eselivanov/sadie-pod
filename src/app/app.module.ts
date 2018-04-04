@@ -73,6 +73,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ElasticSearchService } from './service/elastic-search.service';
 import { AutoCompleteComponent } from './component/auto-complete/auto-complete.component';
+import { PatientService } from './service/patient.service';
 
 
 // InputTextModule, ButtonModule, DropdownModule, 
@@ -105,7 +106,7 @@ import { AutoCompleteComponent } from './component/auto-complete/auto-complete.c
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
     DrugDosageRequestInfoComponent, AutoCompleteComponent
   ],
-  providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
+  providers: [ QuestionControlService, PatientService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
