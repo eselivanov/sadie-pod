@@ -43,7 +43,7 @@ export class AutoCompleteComponent implements AfterViewInit {
     }
    
     ngAfterViewInit() {
-        this.seachText
+      /*  this.seachText
             .valueChanges
             .map((ẗext: any) => ẗext ? ẗext.trim() : "")                                             // ignore spaces         
             .do(searchString => searchString ? this.message = "searching..." : this.message = "")
@@ -76,7 +76,7 @@ export class AutoCompleteComponent implements AfterViewInit {
                 });
             })
             .catch(this.handleError)
-            .subscribe(this.results$);
+            .subscribe(this.results$);**/
     }
 
     resutSelected(result) {
