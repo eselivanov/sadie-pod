@@ -73,7 +73,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ElasticSearchService } from './service/elastic-search.service';
 import { AutoCompleteComponent } from './component/auto-complete/auto-complete.component';
+<<<<<<< HEAD
 import { PatientService } from './service/patient.service';
+=======
+import { DrugSearchComponent } from './component/drug-search/drug-search.component';
+>>>>>>> cc14ec8696b46dbd9c0b8fc43043fd7f874a3122
 
 
 // InputTextModule, ButtonModule, DropdownModule, 
@@ -104,7 +108,7 @@ import { PatientService } from './service/patient.service';
   declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent, 
     SelectItemPipePipe, ComplexTableComponent, GeneralRequestInfoComponent, 
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
-    DrugDosageRequestInfoComponent, AutoCompleteComponent
+    DrugDosageRequestInfoComponent, AutoCompleteComponent, DrugSearchComponent
   ],
   providers: [ QuestionControlService, PatientService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
   bootstrap: [ AppComponent ]

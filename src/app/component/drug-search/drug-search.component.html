@@ -1,0 +1,17 @@
+
+<mat-form-field fxFlex="calc(50% - 10px)" fxFlexFill>
+  <input type="text" placeholder="Select Drug" aria-label="Select Drug" matInput [formControl]="stateCtrl" [matAutocomplete]="auto"
+    (blur)="active = false" (focus)="active = true">
+  <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+    <mat-option *ngFor="let option of options" [value]="option._source.longname">
+      <span class="autCompleteResults" [innerHTML]="option.highlight.longname"></span>
+    </mat-option>
+  </mat-autocomplete>
+  
+  <div class="sb-message" *ngIf="!!message  && active">
+    <span>{{ message }}</span>
+  </div>
+</mat-form-field>
+
+
+  
