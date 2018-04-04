@@ -72,6 +72,7 @@ import { CodeTableService } from './service/code-table.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ElasticSearchService } from './service/elastic-search.service';
+import { AutoCompleteComponent } from './component/auto-complete/auto-complete.component';
 import { DrugSearchComponent } from './component/drug-search/drug-search.component';
 
 
@@ -103,7 +104,7 @@ import { DrugSearchComponent } from './component/drug-search/drug-search.compone
   declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent, 
     SelectItemPipePipe, ComplexTableComponent, GeneralRequestInfoComponent, 
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
-    DrugDosageRequestInfoComponent, DrugSearchComponent
+    DrugDosageRequestInfoComponent, AutoCompleteComponent, DrugSearchComponent
   ],
   providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
   bootstrap: [ AppComponent ]
