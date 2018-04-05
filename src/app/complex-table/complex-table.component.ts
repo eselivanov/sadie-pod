@@ -1,10 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 import { QuestionBase }     from '../question-base';
 import { TableQuestion }    from '../question-table';
 import { RuleServiceService } from '../service/rule-service.service';
 import { MatTableDataSource } from '@angular/material';
 import { KeyPair }            from '../model/key-pair';
+//adding table column to try and initialize columns variable
+import { TableColumn } from '../table-column';
+
 
 
 @Component({
@@ -12,19 +15,43 @@ import { KeyPair }            from '../model/key-pair';
   templateUrl: './complex-table.component.html',
   styleUrls: ['./complex-table.component.css']
 })
-export class ComplexTableComponent implements OnInit {
-
-  @Input() question: TableQuestion;
-  displayedColumns: string[];
+export class ComplexTableComponent implements OnChanges {
+  //displayedColumns = [];
+  @Input() question?: TableQuestion;
+  displayedColumns?: string[];
   dataSource = undefined;
-
-  constructor(private rulesService: RuleServiceService) { }
+  //added columns to try to initialize
+  //columns?: TableColumn[];
+  
+  constructor(private rulesService: RuleServiceService) { 
+    //trying to initialize columns
+    //this.columns = [];
+    //this.question.columns = [];
+    //this.question.value = ['questionID'];
+  }
 
   ngOnInit() {
-    this.displayedColumns = this.question.columns.map(e => { return e.fieldName });
+  //  if (this.question.columns.map != undefined){
+    
+  //  }
+   // ['questionID']; // 
+    
     // this.displayedColumns = ['efficacy'];
-    this.dataSource =new MatTableDataSource(this.question.value);
+    
+    //this.dataSource = new MatTableDataSource(this.question.value);
+    //this.displayedColumns =this.question.columns.map(e => { return e.fieldName });
   }
+  ngOnChanges() {
+    //  if (this.question.columns.map != undefined){
+      
+    //  }
+     // ['questionID']; // 
+      
+      // this.displayedColumns = ['efficacy'];
+      
+      this.dataSource = new MatTableDataSource(this.question.value);
+      this.displayedColumns =this.question.columns.map(e => { return e.fieldName });
+    }
 
   test(rows : any) : MatTableDataSource<any> {
     return new MatTableDataSource(rows);

@@ -1,14 +1,19 @@
 <!-- Display for large devices -->
-<h3 matSubheader>{{question.questionText}}</h3>
+<h3 matSubheader>{{question?.questionText}}</h3>
 <div fxHide.lt-md>
+  <!-- Added if dataSource is undefined then don't go into page, it doesn't appear to work -->
+  <div *ngIf="dataSource">
   <mat-table [dataSource]="dataSource">
-    <ng-container *ngFor="let column of question.columns" [matColumnDef]="column.fieldName">
-      <mat-header-cell *matHeaderCellDef> {{column.header}} </mat-header-cell>
+    <!-- I believe error has to do with question.columns -->
+    <!-- Create ngIf to verify question is not null so columns aren't null -->
+    <div *ngIf="question"> 
+    <ng-container *ngFor="let column of question.columns" [matColumnDef]="column.fieldName"> 
+      <mat-header-cell *matHeaderCellDef> {{column?.header}} </mat-header-cell>
       <mat-cell *matCellDef="let rowData" [ngSwitch]="column.controlType">
           <mat-form-field *ngSwitchCase="'dropdown'">
           <mat-select [compareWith]="compareFn" [(ngModel)]="rowData[column.fieldName]">
             <mat-option *ngFor="let option of column.options" [value]="option">
-              {{option.value}}
+              {{option?.value}}
             </mat-option>
           </mat-select>
           </mat-form-field>
@@ -31,35 +36,40 @@
         </div>
       </mat-cell>
     </ng-container>
+  </div>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <!-- columns error is not caused by this-->
+    <!--<div *ngIf="question.columns">-->
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <!--</div>-->
   </mat-table>
 </div>
 <!-- Display for mobile -->
 <div fxHide.md fxHide.gt-md>
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let item of question.value">
+    <mat-expansion-panel *ngFor="let item of question?.value">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <ng-container *ngIf="item[question.primaryIdFieldName].value !== undefined">
-            {{item[question.primaryIdFieldName].value}}
+          <ng-container *ngIf="item[question.primaryIdFieldName]?.value !== undefined">
+            {{item[question.primaryIdFieldName]?.value}}
           </ng-container>
-          <ng-container *ngIf="item[question.primaryIdFieldName].value === undefined">
+          <ng-container *ngIf="item[question.primaryIdFieldName]?.value === undefined">
               {{item[question.primaryIdFieldName]}}
             </ng-container>
         </mat-panel-title>
         <mat-panel-description>
-          {{question.hintText}}
+          {{question?.hintText}}
         </mat-panel-description>
       </mat-expansion-panel-header>
 
       <div fxLayout="column" fxLayoutAlign="start stretch">
-        <ng-container *ngFor="let column of question.columns" [ngSwitch]="column.controlType">
+       <!--   <div *ngIf="question.columns">-->
+        <ng-container *ngFor="let column of question?.columns" [ngSwitch]="column.controlType"> 
           <mat-form-field *ngSwitchCase="'dropdown'" >
             <mat-select [compareWith]="compareFn" [(ngModel)]="item[column.fieldName]" [placeholder]="column.header"
               fxFlex="100%" fxFlexFill>
               <mat-option *ngFor="let option of column.options" [value]="option">
-                {{option.value}}
+                {{option?.value}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -80,8 +90,10 @@
           <div *ngSwitchDefault>
             {{item[column.fieldName]}}
           </div>
-        </ng-container>
+        </ng-container> 
+       <!-- </div>-->
       </div>
     </mat-expansion-panel>
   </mat-accordion>
+</div>
 </div>

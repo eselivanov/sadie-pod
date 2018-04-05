@@ -8,7 +8,7 @@ import { Patient } from '../model/patient';
   styleUrls: ['./patient-request-info.component.css']
 })
 export class PatientRequestInfoComponent implements OnInit {
-  @Input() patient?: Patient;
+  @Input() patient: Patient;
 
   constructor() { }
 

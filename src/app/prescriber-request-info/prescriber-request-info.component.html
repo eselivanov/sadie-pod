@@ -3,16 +3,16 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
      fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
   <mat-form-field fxFlex="100%" fxFlexFill>
-    <input matInput [(ngModel)]="prescriber.name" placeholder="Name" readonly>
+    <input matInput [ngModel]="prescriber?.name" (ngModelChange)="prescriber.name = $event" placeholder="Name" readonly>
   </mat-form-field>
   <mat-form-field fxFlex fxFlexFill>
-    <input matInput [(ngModel)]="prescriber.licenceNumber" placeholder="Registration Number" readonly>
+    <input matInput [ngModel]="prescriber?.licenceNumber" (ngModelChange)="prescriber.licenceNumber = $event" placeholder="Registration Number" readonly>
   </mat-form-field>
   <mat-form-field fxFlex fxFlexFill>
-    <input matInput [(ngModel)]="prescriber.licenceType" placeholder="Registration Type" readonly>
+    <input matInput [ngModel]="prescriber?.licenceType" (ngModelChange)="prescriber.licenceType = $event" placeholder="Registration Type" readonly>
   </mat-form-field>
   <mat-form-field fxFlex fxFlexFill>
-    <input matInput [(ngModel)]="prescriber.jurisdiction" placeholder="Jurisdication" readonly>
+    <input matInput [ngModel]="prescriber?.jurisdiction" (ngModelChange)="prescriber.jurisdication = $event" placeholder="Jurisdication" readonly>
   </mat-form-field>
 </div>
 
@@ -21,20 +21,20 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
      fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
   <mat-form-field fxFlex="100%" fxFlexFill>
-    <input matInput [(ngModel)]="prescriber.practiceLocationName" placeholder="Location Name" readonly>
+    <input matInput [ngModel]="prescriber?.practiceLocationName" (ngModelChange)="prescriber.practiceLocationName = $event" placeholder="Location Name" readonly>
   </mat-form-field>
 
   <mat-form-field fxFlex="100%" fxFlexFill>
-    <input matInput [(ngModel)]="prescriber.practiceLocationAddressLine1" placeholder="Address Line 1" readonly>
+    <input matInput [ngModel]="prescriber?.practiceLocationAddressLine1" (ngModelChange)="prescriber.practiceLocationAddressLine1 = $event" placeholder="Address Line 1" readonly>
     <mat-icon matSuffix class="icon-color">mail</mat-icon>
   </mat-form-field>
 
   <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
-    <input matInput [(ngModel)]="prescriber.practiceLocationFaxNumber" placeholder="Primary Fax Number" readonly>
+    <input matInput [ngModel]="prescriber?.practiceLocationFaxNumber" (ngModelChange)="prescriber.practiceLocationFaxNumber = $event" placeholder="Primary Fax Number" readonly>
   </mat-form-field>
 
   <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
-    <input matInput [(ngModel)]="prescriber.practiceLocationPhoneNumber" placeholder="Primary Phone Number" readonly />
+    <input matInput [ngModel]="prescriber?.practiceLocationPhoneNumber" (ngModelChange)="prescriber.practiceLocationPhoneNumber = $event" placeholder="Primary Phone Number" readonly />
     <mat-icon matSuffix class="icon-color">phone</mat-icon>
   </mat-form-field>
 </div>

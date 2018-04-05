@@ -247,6 +247,7 @@ export class InMemoryDataService implements InMemoryDbService {
     gdeforms.push({
       id: 3,
       questions: [
+        //This question is being used
         new TableQuestion({
           questionId: 'Q001',
           key: 'drugHistoryResult',
@@ -274,24 +275,27 @@ export class InMemoryDataService implements InMemoryDbService {
           ],
           order: 1
         }),
+        //This question is being used atm
         new TableQuestion({
           questionId: 'Q002',
           key: 'labHistoryResult',
           questionText: 'Lab History',
           type: 'table',
           value: [
-            { type: 'LabResult', labTestName: { key: 'HgB', value: 'HgB' } },
-            { type: 'LabResult', labTestName: { key: 'Creatinin', value: 'Creatinin' } }
+            //changing labTestName to labResultType
+            { type: 'LabResult', labResultType: { key: 'HgB', value: 'HgB' } },
+            { type: 'LabResult', labResultType: { key: 'Creatinin', value: 'Creatinin' } }
           ],
           columns: [
             {
-              fieldName: 'labTestName', header: 'Lab Test Name', controlType: 'dropdown', options: [
+              fieldName: 'labResultType', header: 'Lab Test Name', controlType: 'dropdown', options: [
                 { key: 'HgB', value: 'HgB' },
                 { key: 'Creatinin', value: 'Creatinin' }
               ]
+              //Changed labResultType to labResultValue
             },
             { fieldName: 'labTestDate', header: 'Date', controlType: 'date', inputType: 'date' },
-            { fieldName: 'labTestResult', header: 'Lab Result', controlType: 'text', inputType: 'text' }
+            { fieldName: 'labResultValue', header: 'Lab Result', controlType: 'text', inputType: 'text' }
           ],
           order: 2
         }),
@@ -303,11 +307,13 @@ export class InMemoryDataService implements InMemoryDbService {
           showControl: false,
           defaultShowControl: false,
           value: [
-            { type: 'MedicalCondition', medicalCondition: { key: 'Seizures', value: 'Seizures' } }
+            //Changed MedicalCondition to condition
+            { type: 'MedicalCondition', condition: { key: 'Seizures', value: 'Seizures' } }
           ],
           columns: [
             {
-              fieldName: 'medicalCondition', header: 'Medical Condition', controlType: 'dropdown', options: [
+              //changed medicalCondition to condition
+              fieldName: 'condition', header: 'Medical Condition', controlType: 'dropdown', options: [
                 { key: 'Seizures', value: 'Seizures' }
               ]
             },
