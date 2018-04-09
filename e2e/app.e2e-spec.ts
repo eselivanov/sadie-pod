@@ -3,7 +3,7 @@
 import { browser, element, by } from 'protractor';
 
 /* tslint:disable:quotemark */
-describe('Dynamic Form', function () {
+describe('SADIE PoT', function () {
 
     beforeAll(function () {
         browser.get('');

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { PatientService } from '../service/patient.service';
 import { Patient } from '../model/patient';
 
 @Component({
@@ -16,10 +17,19 @@ export class PatientRequestInfoComponent implements OnInit {
     //Validators.min(100000000)
   ]);
   constructor() { }
+  patients: Patient[];
+
+  //constructor(private patientService: PatientService) { }
 
   ngOnInit() {
+    //this.getPatients();
   }
-   
+/*  
+  getPatients(): void {
+    this.patientService.getPatients()
+        .subscribe(patients => this.patients = patients);
+  }
+  */
 }
 function minLengthValidator(control: FormControl) { 
   let numberLength = control.value.length; 

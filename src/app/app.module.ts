@@ -80,6 +80,10 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 //Primeng
 import {PickListModule} from 'primeng/picklist';
+import { PatientService } from './service/patient.service';
+import { DrugSearchComponent } from './component/drug-search/drug-search.component';
+
+
 // InputTextModule, ButtonModule, DropdownModule, 
 //         TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, MessagesModule, 
 //         MessageModule, 
@@ -107,9 +111,10 @@ import {PickListModule} from 'primeng/picklist';
   declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent, 
     SelectItemPipePipe, ComplexTableComponent, GeneralRequestInfoComponent, 
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
-    DrugDosageRequestInfoComponent, AutoCompleteComponent, DashboardComponent
+    DrugDosageRequestInfoComponent, AutoCompleteComponent, DashboardComponent,
+     AutoCompleteComponent, DrugSearchComponent
   ],
-  providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
+  providers: [ QuestionControlService, PatientService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
