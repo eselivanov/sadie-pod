@@ -61,6 +61,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }            from '../service/in-memory-data.service';
 import { HttpClientModule }             from '@angular/common/http';
 
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+
 describe('PrescriberRequestInfoComponent', () => {
   let component: PrescriberRequestInfoComponent;
   let fixture: ComponentFixture<PrescriberRequestInfoComponent>;
@@ -72,7 +74,7 @@ describe('PrescriberRequestInfoComponent', () => {
         MatCardModule, MatGridListModule, MatIconModule, MatRadioModule, MatTableModule,
         MatListModule, MatExpansionModule, MatSidenavModule, MatToolbarModule, MatMenuModule, 
         ReactiveFormsModule, MatNativeDateModule, MatAutocompleteModule, BrowserAnimationsModule,
-        HttpClientModule],
+        HttpClientModule, MultiselectDropdownModule],
       providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService,
           ElasticSearchService ],
       declarations: [ PrescriberRequestInfoComponent, PatientRequestInfoComponent, GeneralRequestInfoComponent, DrugRequestInfoComponent, DrugDosageRequestInfoComponent, ComplexTableComponent, AppComponent,

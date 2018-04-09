@@ -49,7 +49,6 @@ import { DynamicFormQuestionComponent } from './component/dynamic-question/dynam
 
 import { SelectItemPipePipe } from './select-item-pipe.pipe';
 
-
 import { BrowserAnimationsModule }      from '@angular/platform-browser/animations';
 import { ComplexTableComponent } from './complex-table/complex-table.component';
 import { GeneralRequestInfoComponent } from './general-request-info/general-request-info.component';
@@ -73,8 +72,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ElasticSearchService } from './service/elastic-search.service';
 import { AutoCompleteComponent } from './component/auto-complete/auto-complete.component';
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
+//multi select tool imports
+//Angular2
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+//Angular 4
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+//Primeng
+import {PickListModule} from 'primeng/picklist';
 // InputTextModule, ButtonModule, DropdownModule, 
 //         TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, MessagesModule, 
 //         MessageModule, 
@@ -82,13 +87,12 @@ import { AutoCompleteComponent } from './component/auto-complete/auto-complete.c
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, 
-
         MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule,
         MatDatepickerModule, MatNativeDateModule, MatCardModule, MatGridListModule,
         MatIconModule, MatRadioModule, MatTableModule, MatListModule, MatExpansionModule,
         MatSidenavModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatAutocompleteModule,
-        HttpClientModule,
-        FlexLayoutModule,
+        HttpClientModule,AngularMultiSelectModule,MultiselectDropdownModule,
+        FlexLayoutModule,PickListModule,
     
         // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
         // and returns simulated server responses.
@@ -103,7 +107,7 @@ import { AutoCompleteComponent } from './component/auto-complete/auto-complete.c
   declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent, 
     SelectItemPipePipe, ComplexTableComponent, GeneralRequestInfoComponent, 
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
-    DrugDosageRequestInfoComponent, AutoCompleteComponent
+    DrugDosageRequestInfoComponent, AutoCompleteComponent, DashboardComponent
   ],
   providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
   bootstrap: [ AppComponent ]

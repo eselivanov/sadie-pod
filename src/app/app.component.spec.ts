@@ -57,6 +57,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 
 describe('AppComponent', () => { beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -66,7 +67,8 @@ describe('AppComponent', () => { beforeEach(async(() => {
               MatInputModule, MatSelectModule, MatCheckboxModule, MatDatepickerModule,
               MatCardModule, MatGridListModule, MatIconModule, MatRadioModule, MatTableModule,
               MatListModule, MatExpansionModule, MatSidenavModule, MatToolbarModule, MatMenuModule, 
-              ReactiveFormsModule, MatNativeDateModule, MatAutocompleteModule, BrowserAnimationsModule],
+              ReactiveFormsModule, MatNativeDateModule, MatAutocompleteModule, BrowserAnimationsModule,
+              MultiselectDropdownModule],
 
 providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
 

@@ -2,11 +2,54 @@
 <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
      fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
     <mat-form-field fxFlex="100%" fxFlexFill>
-        <input matInput [ngModel]="patient?.healthNumber" (ngModelChange)="patient.healthNumber = $event" #healthCard placeholder="Health Card Number" maxlength="10" required>
+        <!--
+            formControlName = "healthCardFormControl"
+        -->
+        <input matInput 
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            [ngModel]="patient?.healthNumber" 
+            (ngModelChange)="patient.healthNumber = $event" 
+            #healthCard placeholder="Health Card Number" 
+            maxlength="10"
+            type=number           
+            required>
+       <!--  error for over max length   
+           <mat-error *ngIf="healthCardFormControl.hasError('maxLength') && !healthCardFormControl.hasError('required')">
+               maxLength does not work for number types -->
+            <mat-error *ngIf="healthCardFormControl.hasError('maxLength')">          
+                    Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="healthCardFormControl.hasError('required')">
+                    Health Card is <strong>required</strong>
+                  </mat-error>
+                  <!-- These below error checks don't work -->
+                  <mat-error *ngIf="healthCardFormControl.hasError('numberLength')">
+                        Health Card should be 10 digits
+                      </mat-error>
+                      <div class="form-control-feedback">
+                          <p *ngIf="healthCardFormControl.errors.numberlength">
+                                Health Card should be 10 digits
+                          </p>
+                      </div>
         <mat-hint align="start">Please enter your healthcard number.</mat-hint>
         <mat-hint align="end">{{healthCard.value.length}} / 10</mat-hint>
+        
     </mat-form-field>
+<!-- test health card field ends -->
 
+
+    <mat-form-field fxFlex="100%" fxFlexFill>
+            <input matInput 
+                [ngModel]="patient?.healthNumber" 
+                (ngModelChange)="patient.healthNumber = $event" 
+                #healthCard placeholder="Health Card Number" 
+                maxlength="10"
+                required>
+           
+            <mat-hint align="start">Please enter your healthcard number.</mat-hint>
+            <mat-hint align="end">{{healthCard.value.length}} / 10</mat-hint>
+            
+        </mat-form-field>
     <mat-form-field fxFlex="calc(33% - 10px)" fxFlexFill>
         <input matInput [ngModel]="patient?.firstName" (ngModelChange)="patient.firstName = $event" placeholder="First Name" required>
     </mat-form-field>

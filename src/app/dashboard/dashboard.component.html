@@ -1,0 +1,61 @@
+<p>
+  dashboard works!
+</p>
+<h3>Angular4</h3>
+<ss-multiselect-dropdown 
+    [options]="myOptions" 
+    [settings]="mySettings" 
+    [texts]="myTexts" 
+    [(ngModel)]="optionsModel" 
+    (ngModelChange)="onChange($event)">
+</ss-multiselect-dropdown>
+<br><br><br>
+<h3>Angular 2 </h3>
+<angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" 
+    [settings]="dropdownSettings" 
+    (onSelect)="onItemSelect($event)" 
+    (onDeSelect)="OnItemDeSelect($event)"
+    (onSelectAll)="onSelectAll($event)"
+    (onDeSelectAll)="onDeSelectAll($event)">
+</angular2-multiselect>
+<br><br>
+<mat-list>
+    <mat-list-item> Pepper </mat-list-item>
+    <mat-list-item> Salt </mat-list-item>
+    <mat-list-item> Paprika </mat-list-item>
+   </mat-list>
+   <br><br>
+   <h3>Material List</h3>
+   <mat-selection-list #shoes>
+      <mat-list-option *ngFor="let shoe of typesOfShoes">
+        {{shoe}}
+      </mat-list-option>
+    </mat-selection-list>
+    
+    <p>
+      Options selected: {{shoes.selectedOptions.selected.length}}
+    </p>
+
+    <br><br><br>
+    <mat-list>
+        <mat-list-item *ngFor="let message of messages">
+          <h3 matLine> {{message.from}} </h3>
+          <p matLine>
+            <span> {{message.subject}} </span>
+            <span class="demo-2"> -- {{message.content}} </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+      <br><br>
+      <p-pickList [source]="list1" [target]="list2" filterBy="length" [responsive]="true" 
+        sourceHeader="Source List" targetHeader="Target List" dragdrop="true"
+         >
+          <ng-template let-thing pTemplate="item">
+              <div class="ui-helper-clearfix">
+                <!--  <img src="assets/showcase/images/demo/car/{{car.brand}}.png" style="display:inline-block;margin:2px 0 2px 2px" width="48">-->
+                 <!-- <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{car.brand}} - {{car.year}} - {{car.color}}</div> -->
+                 <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{thing}}</div>
+              </div>
+          </ng-template>
+      </p-pickList>
+<br><br>
