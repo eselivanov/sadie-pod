@@ -19,7 +19,6 @@ export class ComplexTableComponent implements OnInit {
   displayedColumns: string[];
   dataSource = undefined;
   uploadedFiles?: any[] = [];
-  filesUploaded: boolean = false;
 
   constructor(private rulesService: RuleServiceService) { }
 
@@ -43,7 +42,6 @@ export class ComplexTableComponent implements OnInit {
       console.log(file);
       rowData.attachment = file;
       this.uploadedFiles.push(file);
-        this.filesUploaded = true;
     }
     console.log(this.dataSource);
   }
