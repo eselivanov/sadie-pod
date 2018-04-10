@@ -4,4 +4,5 @@ export enum GDEComponentType {
   Date,
   Text,
   Table,
+  FileUpload
 }

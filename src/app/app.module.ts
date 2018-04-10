@@ -41,6 +41,7 @@ import {MatNativeDateModule, MatAutocomplete, MatAutocompleteModule}            
 
 // PrimeNG model
 import { SelectItem }                   from 'primeng/primeng';
+import { FileUploadModule }                   from 'primeng/primeng';
 
 // DynamicFormComponents
 import { DynamicFormComponent }         from './component/dynamic-form/dynamic-form.component';
@@ -96,7 +97,9 @@ import { DrugSearchComponent } from './component/drug-search/drug-search.compone
         MatIconModule, MatRadioModule, MatTableModule, MatListModule, MatExpansionModule,
         MatSidenavModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatAutocompleteModule,
         HttpClientModule,AngularMultiSelectModule,MultiselectDropdownModule,
-        FlexLayoutModule,PickListModule,
+        PickListModule,  
+        FlexLayoutModule,
+        FileUploadModule,
     
         // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
         // and returns simulated server responses.

@@ -9,6 +9,7 @@ import { KeyPair }            from '../model/key-pair';
 import { TableColumn } from '../table-column';
 
 
+import { FileUploadModule, FileUpload, DataListModule, DataList } from 'primeng/primeng';
 
 @Component({
   selector: 'app-complex-table',
@@ -29,6 +30,9 @@ export class ComplexTableComponent implements OnChanges {
     //this.question.columns = [];
     //this.question.value = ['questionID'];
   }
+  uploadedFiles?: any[] = [];
+
+ 
 
   ngOnInit() {
   //  if (this.question.columns.map != undefined){
@@ -59,5 +63,15 @@ export class ComplexTableComponent implements OnChanges {
 
   compareFn(c1: KeyPair, c2: KeyPair): boolean {
     return c1 && c2 ? c1.key === c2.key : c1 === c2;
+  }
+  onUpload(event, rowData) {
+    console.log(event);
+    console.log(rowData);
+    for(let file of event.files) {
+      console.log(file);
+      rowData.attachment = file;
+      this.uploadedFiles.push(file);
+    }
+    console.log(this.dataSource);
   }
 }
