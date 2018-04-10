@@ -59,7 +59,7 @@ import { InMemoryDataService }            from '../service/in-memory-data.servic
 import { HttpClientModule }             from '@angular/common/http';
 
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
-
+import { DrugSearchComponent } from '../component/drug-search/drug-search.component';
 
 describe('DrugRequestInfoComponent', () => {
   let component: DrugRequestInfoComponent;
@@ -81,7 +81,8 @@ describe('DrugRequestInfoComponent', () => {
         SelectItemPipePipe,
         GeneralRequestInfoComponent,
         PatientRequestInfoComponent,
-        PrescriberRequestInfoComponent ]
+        PrescriberRequestInfoComponent,
+        DrugSearchComponent ]
     })
     .compileComponents();
   }));

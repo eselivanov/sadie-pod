@@ -51,6 +51,7 @@ import { PatientRequestInfoComponent } from '../patient-request-info/patient-req
 import { PrescriberRequestInfoComponent } from '../prescriber-request-info/prescriber-request-info.component';
 import { DrugRequestInfoComponent } from '../drug-request-info/drug-request-info.component';
 import { DrugDosageRequestInfoComponent } from '../drug-dosage-request-info/drug-dosage-request-info.component';
+import { DrugSearchComponent } from './../component/drug-search/drug-search.component';
 
 // In Memory Data Web API / Memory Service
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -65,25 +66,16 @@ describe('ComplexTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, RouterTestingModule, MatFormFieldModule, MatButtonModule,
-        MatInputModule, MatSelectModule, MatCheckboxModule, MatDatepickerModule,
-        MatCardModule, MatGridListModule, MatIconModule, MatRadioModule, MatTableModule,
-        MatListModule, MatExpansionModule, MatSidenavModule, MatToolbarModule, MatMenuModule, 
+      imports: [FormsModule, RouterTestingModule, 
+         MatSelectModule, MatCheckboxModule, MatDatepickerModule,
+         MatIconModule, MatRadioModule, MatTableModule,
+         MatExpansionModule, MatToolbarModule, MatMenuModule, 
         ReactiveFormsModule, MatNativeDateModule, MatAutocompleteModule, BrowserAnimationsModule,
         HttpClientModule, MultiselectDropdownModule],
 
-        providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService,
-           ElasticSearchService ],
+        providers: [  RuleServiceService ],
 
-      declarations: [ ComplexTableComponent, AppComponent,
-        DynamicFormComponent,
-        DynamicFormQuestionComponent,
-        SelectItemPipePipe,
-        GeneralRequestInfoComponent,
-        PatientRequestInfoComponent,
-        PrescriberRequestInfoComponent,
-        DrugRequestInfoComponent,
-        DrugDosageRequestInfoComponent ]
+      declarations: [ ComplexTableComponent ]
     })
     .compileComponents();
   }));

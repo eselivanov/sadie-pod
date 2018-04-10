@@ -1,10 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PrescriberRequestInfoComponent } from './prescriber-request-info.component';
-import { PatientRequestInfoComponent } from '../patient-request-info/patient-request-info.component';
-
-import { GeneralRequestInfoComponent } from '../general-request-info/general-request-info.component';
-import { DrugRequestInfoComponent } from '../drug-request-info/drug-request-info.component';
 
 //Base
 import { AppComponent } from '../app.component';
@@ -26,20 +22,16 @@ import { DynamicFormQuestionComponent } from '../component/dynamic-question/dyna
 
 // Material Components
 
-import {MatFormFieldModule}             from '@angular/material/form-field';
-import {MatButtonModule}                from '@angular/material/button';
+
 import {MatInputModule}                 from '@angular/material/input';
 import {MatSelectModule}                from '@angular/material/select';
 import {MatCheckboxModule}              from '@angular/material/checkbox';
 import {MatDatepickerModule}            from '@angular/material/datepicker';
-import {MatCardModule}                  from '@angular/material/card';
-import {MatGridListModule}              from '@angular/material/grid-list';
 import {MatIconModule}                  from '@angular/material/icon';
 import {MatRadioModule}                 from '@angular/material/radio';
 import {MatTableModule}                 from '@angular/material/table';
 import {MatListModule}                  from '@angular/material/list';
 import {MatExpansionModule}             from '@angular/material/expansion';
-import {MatSidenavModule}               from '@angular/material/sidenav';
 import {MatToolbarModule}               from '@angular/material/toolbar';
 import {MatMenuModule}                  from '@angular/material/menu';
 import {MatNativeDateModule, MatAutocomplete, MatAutocompleteModule}            from '@angular/material';
@@ -47,21 +39,12 @@ import {MatNativeDateModule, MatAutocomplete, MatAutocompleteModule}            
 //Modules
 import { ReactiveFormsModule }          from '@angular/forms';
 import { BrowserAnimationsModule }      from '@angular/platform-browser/animations';
-// PrimeNG model
-import { SelectItem }                   from 'primeng/primeng';
-//Item Pipe
-import { SelectItemPipePipe } from '../select-item-pipe.pipe';
-//Components
-import { ComplexTableComponent } from '../complex-table/complex-table.component';
-
-import { DrugDosageRequestInfoComponent } from '../drug-dosage-request-info/drug-dosage-request-info.component';
 
 // In Memory Data Web API / Memory Service and HttpClient
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }            from '../service/in-memory-data.service';
 import { HttpClientModule }             from '@angular/common/http';
 
-import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 
 describe('PrescriberRequestInfoComponent', () => {
   let component: PrescriberRequestInfoComponent;
@@ -69,18 +52,15 @@ describe('PrescriberRequestInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, RouterTestingModule, MatFormFieldModule, MatButtonModule,
-        MatInputModule, MatSelectModule, MatCheckboxModule, MatDatepickerModule,
-        MatCardModule, MatGridListModule, MatIconModule, MatRadioModule, MatTableModule,
-        MatListModule, MatExpansionModule, MatSidenavModule, MatToolbarModule, MatMenuModule, 
-        ReactiveFormsModule, MatNativeDateModule, MatAutocompleteModule, BrowserAnimationsModule,
-        HttpClientModule, MultiselectDropdownModule],
-      providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService,
-          ElasticSearchService ],
-      declarations: [ PrescriberRequestInfoComponent, PatientRequestInfoComponent, GeneralRequestInfoComponent, DrugRequestInfoComponent, DrugDosageRequestInfoComponent, ComplexTableComponent, AppComponent,
-        DynamicFormComponent,
-        DynamicFormQuestionComponent,
-        SelectItemPipePipe ]
+      imports: [FormsModule, RouterTestingModule, MatSelectModule, MatDatepickerModule,
+         MatInputModule,MatCheckboxModule,MatIconModule,
+         MatRadioModule, MatTableModule,
+        MatListModule, MatExpansionModule,  MatToolbarModule, MatMenuModule, 
+        ReactiveFormsModule, MatAutocompleteModule, BrowserAnimationsModule,
+        HttpClientModule],
+      providers: [  
+           ],
+      declarations: [ PrescriberRequestInfoComponent ]
     })
     .compileComponents();
   }));

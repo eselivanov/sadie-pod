@@ -10,6 +10,13 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2
 
 
 import {MatListModule}                  from '@angular/material/list';
+import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
+import { IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
+import { IMultiSelectSettings } from 'angular-2-dropdown-multiselect';
+import { MatTableDataSource } from '@angular/material';
+import {PickListModule} from 'primeng/picklist';
+
+
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
@@ -17,7 +24,7 @@ describe('DashboardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, RouterTestingModule, MultiselectDropdownModule,
-         AngularMultiSelectModule, MatListModule],
+         AngularMultiSelectModule, MatListModule, PickListModule],
       declarations: [ DashboardComponent ]
     })
     .compileComponents();

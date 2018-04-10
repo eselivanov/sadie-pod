@@ -58,6 +58,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import { DrugSearchComponent } from './component/drug-search/drug-search.component';
 
 describe('AppComponent', () => { beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -82,7 +83,8 @@ providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTa
       PatientRequestInfoComponent,
       PrescriberRequestInfoComponent,
       DrugRequestInfoComponent,
-      DrugDosageRequestInfoComponent
+      DrugDosageRequestInfoComponent,
+      DrugSearchComponent
 
     ],
 

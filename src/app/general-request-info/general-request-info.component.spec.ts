@@ -53,7 +53,7 @@ import { ComplexTableComponent } from '../complex-table/complex-table.component'
 import { PatientRequestInfoComponent } from '../patient-request-info/patient-request-info.component';
 import { PrescriberRequestInfoComponent } from '../prescriber-request-info/prescriber-request-info.component';
 import { DrugDosageRequestInfoComponent } from '../drug-dosage-request-info/drug-dosage-request-info.component';
-
+import { DrugSearchComponent } from '../component/drug-search/drug-search.component';
 // In Memory Data Web API / Memory Service and HttpClient
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }            from '../service/in-memory-data.service';
@@ -80,7 +80,8 @@ describe('GeneralRequestInfoComponent', () => {
         DynamicFormQuestionComponent,
         SelectItemPipePipe,
         PatientRequestInfoComponent,
-        PrescriberRequestInfoComponent  ]
+        PrescriberRequestInfoComponent,
+        DrugSearchComponent  ]
     })
     .compileComponents();
   }));

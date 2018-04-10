@@ -2,22 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DrugDosageRequestInfoComponent } from './drug-dosage-request-info.component';
 //Base
-import { AppComponent } from '../app.component';
+
 import { FormsModule } from '@angular/forms';
 //Routers
 import { RouterTestingModule} from '@angular/router/testing';
 //import { AppRoutingModule } from './app-routing.module';
-
-//Services
-import { QuestionControlService }    from '../question-control.service';
-import { QuestionService } from '../service/question.service';
-import { RuleServiceService } from '../service/rule-service.service';
-import { CodeTableService } from '../service/code-table.service';
-import { ElasticSearchService } from '../service/elastic-search.service';
-
-// DynamicFormComponents
-import { DynamicFormComponent }         from '../component/dynamic-form/dynamic-form.component';
-import { DynamicFormQuestionComponent } from '../component/dynamic-question/dynamic-form-question.component';
 
 // Material Components
 
@@ -42,22 +31,10 @@ import {MatNativeDateModule, MatAutocomplete, MatAutocompleteModule}            
 //Modules
 import { ReactiveFormsModule }          from '@angular/forms';
 import { BrowserAnimationsModule }      from '@angular/platform-browser/animations';
-// PrimeNG model
-import { SelectItem }                   from 'primeng/primeng';
-//Item Pipe
-import { SelectItemPipePipe } from '../select-item-pipe.pipe';
-//Components
-import { ComplexTableComponent } from '../complex-table/complex-table.component';
-import { GeneralRequestInfoComponent } from '../general-request-info/general-request-info.component';
-import { PatientRequestInfoComponent } from '../patient-request-info/patient-request-info.component';
-import { PrescriberRequestInfoComponent } from '../prescriber-request-info/prescriber-request-info.component';
-import { DrugRequestInfoComponent } from '../drug-request-info/drug-request-info.component';
 // In Memory Data Web API / Memory Service and HttpClient
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }            from '../service/in-memory-data.service';
 import { HttpClientModule }             from '@angular/common/http';
-
-import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 
 describe('DrugDosageRequestInfoComponent', () => {
   let component: DrugDosageRequestInfoComponent;
@@ -65,24 +42,14 @@ describe('DrugDosageRequestInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, RouterTestingModule, MatFormFieldModule, MatButtonModule,
-        MatInputModule, MatSelectModule, MatCheckboxModule, MatDatepickerModule,
-        MatCardModule, MatGridListModule, MatIconModule, MatRadioModule, MatTableModule,
-        MatListModule, MatExpansionModule, MatSidenavModule, MatToolbarModule, MatMenuModule, 
+      imports: [FormsModule, RouterTestingModule,  
+        MatInputModule,  MatDatepickerModule, 
         ReactiveFormsModule, MatNativeDateModule, MatAutocompleteModule, BrowserAnimationsModule,
-        HttpClientModule, MultiselectDropdownModule],
+        HttpClientModule],
 
-        providers: [ QuestionControlService, QuestionService, RuleServiceService, CodeTableService,
-          ElasticSearchService ],
+        providers: [  ],
 
-      declarations: [ DrugDosageRequestInfoComponent, ComplexTableComponent, AppComponent,
-        DynamicFormComponent,
-        DynamicFormQuestionComponent,
-        SelectItemPipePipe,
-        GeneralRequestInfoComponent,
-        PatientRequestInfoComponent,
-        PrescriberRequestInfoComponent,
-        DrugRequestInfoComponent ]
+      declarations: [ DrugDosageRequestInfoComponent ]
     })
     .compileComponents();
   }));
