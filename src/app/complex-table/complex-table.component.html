@@ -26,6 +26,14 @@
         <div *ngSwitchCase="'checkbox'">
           <mat-checkbox [(ngModel)]="rowData[column.fieldName]"></mat-checkbox>
         </div>
+        <div *ngSwitchCase="'fileupload'" >
+          <p-fileUpload *ngIf="!rowData.attachment" name="file" url="http://localhost:9081/SADIEFileUpload/rest/upload/files"
+            accept=".txt,.pdf,.docx,.doc"  (onUpload)="onUpload($event, rowData)">
+          </p-fileUpload>
+          <div *ngIf="rowData.attachment">
+            <p>{{ rowData.attachment.name }}</p>
+          </div>
+        </div>
         <div *ngSwitchDefault>
           {{rowData[column.fieldName]}}
         </div>
@@ -77,7 +85,12 @@
           <div *ngSwitchCase="'checkbox'">
             <mat-checkbox [(ngModel)]="item[column.fieldName]">{{column.header}}</mat-checkbox>
           </div>
-          <div *ngSwitchDefault>
+          <div *ngSwitchCase="'fileupload'">
+            <p-fileUpload name="file" url="http://localhost:9080/SADIEFileUpload/rest/upload/files"
+              accept=".txt,.pdf,.docx,.doc">
+            </p-fileUpload>
+          </div>
+            <div *ngSwitchDefault>
             {{item[column.fieldName]}}
           </div>
         </ng-container>

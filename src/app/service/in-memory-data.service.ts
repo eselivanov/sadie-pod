@@ -224,6 +224,7 @@ export class InMemoryDataService implements InMemoryDbService {
             { fieldName: 'endDate', header: 'End Date', controlType: 'date', inputType: 'date' },
             { fieldName: 'efficacy', header: 'Efficacy', controlType: 'checkbox', inputType: 'binary' },
             { fieldName: 'tolerance', header: 'Tolerance', controlType: 'checkbox', inputType: 'binary' },
+            { fieldName: 'attachment', header: 'Attachment', controlType: 'fileupload', inputType: 'file' },
           ],
           order: 7
         }),
@@ -272,6 +273,7 @@ export class InMemoryDataService implements InMemoryDbService {
             { fieldName: 'endDate', header: 'End Date', controlType: 'date', inputType: 'date' },
             { fieldName: 'efficacy', header: 'Efficacy', controlType: 'checkbox', inputType: 'binary' },
             { fieldName: 'tolerance', header: 'Tolerance', controlType: 'checkbox', inputType: 'binary' },
+            { fieldName: 'attachment', header: 'Attachment', controlType: 'fileupload', inputType: 'file' },
           ],
           order: 1
         }),
@@ -295,7 +297,8 @@ export class InMemoryDataService implements InMemoryDbService {
               //Changed labResultType to labResultValue
             },
             { fieldName: 'labTestDate', header: 'Date', controlType: 'date', inputType: 'date' },
-            { fieldName: 'labResultValue', header: 'Lab Result', controlType: 'text', inputType: 'text' }
+            { fieldName: 'labResultValue', header: 'Lab Result', controlType: 'text', inputType: 'text' },
+            { fieldName: 'attachment', header: 'Attachment', controlType: 'fileupload', inputType: 'file' }
           ],
           order: 2
         }),
@@ -325,7 +328,8 @@ export class InMemoryDataService implements InMemoryDbService {
                 { key: 'Medium', value: 'Medium' },
                 { key: 'Low', value: 'Low' }
               ]
-            }
+            },
+            { fieldName: 'attachment', header: 'Attachment', controlType: 'fileupload', inputType: 'file' }
           ],
           order: 3
         }),
