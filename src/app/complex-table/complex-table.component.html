@@ -26,16 +26,14 @@
         <div *ngSwitchCase="'checkbox'">
           <mat-checkbox [(ngModel)]="rowData[column.fieldName]"></mat-checkbox>
         </div>
-        <mat-form-field *ngSwitchCase="'fileupload'" >
-          <p-fileUpload *ngIf="!filesUploaded" name="file" mode="basic" url="http://localhost:9081/SADIEFileUpload/rest/upload/files"
+        <div *ngSwitchCase="'fileupload'" >
+          <p-fileUpload *ngIf="!rowData.attachment" name="file" url="http://localhost:9081/SADIEFileUpload/rest/upload/files"
             accept=".txt,.pdf,.docx,.doc"  (onUpload)="onUpload($event, rowData)">
           </p-fileUpload>
-          <input matInput [(ngModel)]="rowData[column.fieldName]">
-          <div *ngIf="filesUploaded">
-test
+          <div *ngIf="rowData.attachment">
+            <p>{{ rowData.attachment.name }}</p>
           </div>
-         
-        </mat-form-field>
+        </div>
         <div *ngSwitchDefault>
           {{rowData[column.fieldName]}}
         </div>

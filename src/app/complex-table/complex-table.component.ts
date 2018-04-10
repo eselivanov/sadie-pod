@@ -41,7 +41,7 @@ export class ComplexTableComponent implements OnInit {
     console.log(rowData);
     for(let file of event.files) {
       console.log(file);
-      rowData.labAttachment = file;
+      rowData.attachment = file;
       this.uploadedFiles.push(file);
         this.filesUploaded = true;
     }
