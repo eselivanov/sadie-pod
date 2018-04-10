@@ -41,6 +41,8 @@ import {MatNativeDateModule, MatAutocomplete, MatAutocompleteModule}            
 
 // PrimeNG model
 import { SelectItem }                   from 'primeng/primeng';
+import { FileUploadModule }             from 'primeng/primeng';
+import { DataViewModule }             from 'primeng/dataview';
 
 // DynamicFormComponents
 import { DynamicFormComponent }         from './component/dynamic-form/dynamic-form.component';
@@ -73,11 +75,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ElasticSearchService } from './service/elastic-search.service';
 import { AutoCompleteComponent } from './component/auto-complete/auto-complete.component';
-<<<<<<< HEAD
 import { PatientService } from './service/patient.service';
-=======
 import { DrugSearchComponent } from './component/drug-search/drug-search.component';
->>>>>>> cc14ec8696b46dbd9c0b8fc43043fd7f874a3122
 
 
 // InputTextModule, ButtonModule, DropdownModule, 
@@ -93,6 +92,8 @@ import { DrugSearchComponent } from './component/drug-search/drug-search.compone
         MatIconModule, MatRadioModule, MatTableModule, MatListModule, MatExpansionModule,
         MatSidenavModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatAutocompleteModule,
         HttpClientModule,
+        DataViewModule,
+        FileUploadModule, 
         FlexLayoutModule,
     
         // The HttpClientInMemoryWebApiModule module intercepts HTTP requests

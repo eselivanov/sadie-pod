@@ -20,7 +20,7 @@
     "@angular/common": "~5.0.0",
     "@angular/compiler": "~5.0.0",
     "@angular/compiler-cli": "~5.0.0",
-    "@angular/core": "^5.0.5",
+    "@angular/core": "^5.2.9",
     "@angular/flex-layout": "^5.0.0-beta.13",
     "@angular/forms": "~5.0.0",
     "@angular/http": "~5.0.0",
@@ -35,7 +35,7 @@
     "elasticsearch-browser": "^14.2.0",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.5",
-    "primeng": "^5.2.0",
+    "primeng": "^5.2.4",
     "rxjs": "^5.5.0",
     "zone.js": "^0.8.4"
   },
@@ -57,11 +57,17 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "lodash": "^4.17.5",
     "phantomjs-prebuilt": "^2.1.7",
+    "primeng": "^5.2.4",
     "protractor": "~5.1.0",
     "ts-node": "^3.3.0",
     "tslint": "^3.15.1",
     "typescript": "2.4.2"
   },
+  "styles": [
+    "../node_modules/font-awesome/css/font-awesome.min.css",
+    "../node_modules/primeng/resources/primeng.min.css",
+    "../node_modules/primeng/resources/themes/omega/theme.css"
+  ],
   "repository": {},
   "proxy": "http://204.40.194.129:3128"
 }
