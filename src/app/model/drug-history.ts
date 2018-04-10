@@ -6,12 +6,13 @@ export class DrugHistory {
   endDate: Date;
   efficacy: boolean;
   tolerance: boolean;
-
+  labAttachment: File;
   constructor(
     drug? : KeyPair,
     startDate? : Date,
     endDate? : Date,
     efficacy? : boolean,
-    tolerance? : boolean
+    tolerance? : boolean,
+    labAttachement?: File
   ) {}
 }
