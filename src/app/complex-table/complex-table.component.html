@@ -31,7 +31,7 @@
             accept=".txt,.pdf,.docx,.doc"  (onUpload)="onUpload($event, rowData)">
           </p-fileUpload>
           <div *ngIf="rowData.attachment">
-            <p>{{ rowData.attachment.name }}</p>
+            <p>{{ rowData.attachment }}</p>
           </div>
         </div>
         <div *ngSwitchDefault>
@@ -90,7 +90,7 @@
               accept=".txt,.pdf,.docx,.doc"  (onUpload)="onUpload($event, item)">
             </p-fileUpload>
             <div *ngIf="item.attachment">
-              <p>{{ item.attachment.name }}</p>
+              <p>{{ item.attachment }}</p>
             </div>
           </div>
             <div *ngSwitchDefault>
