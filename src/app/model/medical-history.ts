@@ -5,10 +5,12 @@ export class MedicalHistory {
     onsetDate: Date;
     remissionDate: Date;
     severity: string;
+    attachment: string;
     constructor(
         condition?: KeyPair,
         onsetDate?: Date,
         remissionDate?: Date,
-        severity?: string
+        severity?: string,
+        attachment?: string
       ) {}
 }
