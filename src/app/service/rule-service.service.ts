@@ -42,7 +42,7 @@ export class RuleServiceService {
       }
   }
 
-    return this.http.post<QuestionBase<any>[]>('http://localhost:9080/liberty-proj-war/rest/rules', JSON.stringify(copy), httpOptions);
+    return this.http.post<QuestionBase<any>[]>('http://localhost:9080/liberty-proj-war/rest/rule/rules', JSON.stringify(copy), httpOptions);
     // .pipe(
     //   catchError(this.handleError('addHero', hero))
     // );
@@ -57,7 +57,7 @@ export class RuleServiceService {
   /** POST: add a new hero to the database */
   getRules(): Observable<any> {
     console.log('getRules()');
-    return this.http.get('http://localhost:9080/liberty-proj-war/rest/rules').pipe(
+    return this.http.get('http://localhost:9080/liberty-proj-war/rest/rule/rules').pipe(
       tap( // Log the result or error
         error => console.log(error)
       )
