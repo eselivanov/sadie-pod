@@ -12,31 +12,10 @@ import { KeyPair } from '../model/key-pair';
 export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
-    let prescribers = [
-      { id: 11, name: 'Wanda Smith', licenceType: 'Physician', licenceNumber: '987783', jurisdiction: 'GTA', practiceLocationName : 'Main Office' },
-      { id: 12, name: 'Mighty	Chip', licenceType: 'Physician', licenceNumber: '65054', jurisdiction: 'GTA', practiceLocationName : 'Toronto office' },
-      { id: 13, name: 'Francis Smith', licenceType: 'Nurse Practitioner', licenceNumber: '68823', jurisdiction: 'Kingston', practiceLocationName : 'Kingston Office' },
-      { id: 14, name: 'Bob Bobberson', licenceType: 'Physician', licenceNumber: '123456', jurisdiction: 'Kingston', practiceLocationName : 'King St' },
-      { id: 15, name: 'Barney	Rubble', licenceType: 'Nurse Practitioner', licenceNumber: '75105', jurisdiction: 'Unknown', practiceLocationName : 'Secret Lab' },
-      { id: 16, name: 'Pen Stapler', licenceType: 'Physician', licenceNumber: '67979', jurisdiction: 'UK', practiceLocationName : 'The Office' },
-      { id: 17, name: 'Jimmy Shaker', licenceType: 'Physician', licenceNumber: '59364', jurisdiction: 'Toronto', practiceLocationName : 'Downtown Clinic' },      { id: 18, name: 'Dr IQ', licenceType: 'Nurse Practitioner', licenceNumber: '75012', jurisdiction: 'GTA', practiceLocationName : 'Headquarters' },
-      { id: 19, name: 'Fred	Fred', licenceType: 'Physician', licenceNumber: '53313', jurisdiction: 'Kingston', practiceLocationName : 'Office #1' },
-      { id: 20, name: 'Aaron	Alvin	Aardvark', licenceType: 'Physician', licenceNumber: '70399', jurisdiction: 'GTA', practiceLocationName : 'Home Office' }
-    ];
-    let prescriberDelegates = [
-      { id: 11, prescriberId: 11, name: 'Chuck Key' },
-      { id: 112, prescriberId: 12, name: 'Charles	Key'  },
-      { id: 113, prescriberId: 13, name: 'Anzee	Chimp'  },
-      { id: 114, prescriberId: 14, name: 'Tom	Brady'  },
-      { id: 115, prescriberId: 15, name: 'Matt Ryan'  },
-      { id: 116, prescriberId: 16, name: 'Jim	Jam'  }   
-    ];
-    let prescriberLocations = [
-      { id:1, prescriberId:11, name: 'Main Office', address: '49 Place D\'Armes, Kingston, ON, K7L 5J3', email:'nice@doct.or', phone: '555-555-5555', fax: '555-555-5555'}
-    ];
-    return {prescribers, prescriberDelegates, prescriberLocations
-    };
     const gdeforms = [];
+
+    
+   
     const classification = [
       {key: "Amendment", value: "Amendment"},
       {key: "Appeal", value: "Appeal"},
@@ -74,7 +53,30 @@ export class InMemoryDataService implements InMemoryDbService {
       {key: "4", value: "Special Handling #4"},
       {key: "5", value: "Special Handling #5"}
     ];
-
+    let prescribers = [
+      { id: 11, name: 'Wanda Smith', licenceType: 'Physician', licenceNumber: '987783', jurisdiction: 'GTA', practiceLocationName : 'Main Office' },
+      { id: 12, name: 'Mighty	Chip', licenceType: 'Physician', licenceNumber: '65054', jurisdiction: 'GTA', practiceLocationName : 'Toronto office' },
+      { id: 13, name: 'Francis Smith', licenceType: 'Nurse Practitioner', licenceNumber: '68823', jurisdiction: 'Kingston', practiceLocationName : 'Kingston Office' },
+      { id: 14, name: 'Bob Bobberson', licenceType: 'Physician', licenceNumber: '123456', jurisdiction: 'Kingston', practiceLocationName : 'King St' },
+      { id: 15, name: 'Barney	Rubble', licenceType: 'Nurse Practitioner', licenceNumber: '75105', jurisdiction: 'Unknown', practiceLocationName : 'Secret Lab' },
+      { id: 16, name: 'Pen Stapler', licenceType: 'Physician', licenceNumber: '67979', jurisdiction: 'UK', practiceLocationName : 'The Office' },
+      { id: 17, name: 'Jimmy Shaker', licenceType: 'Physician', licenceNumber: '59364', jurisdiction: 'Toronto', practiceLocationName : 'Downtown Clinic' },      { id: 18, name: 'Dr IQ', licenceType: 'Nurse Practitioner', licenceNumber: '75012', jurisdiction: 'GTA', practiceLocationName : 'Headquarters' },
+      { id: 19, name: 'Fred	Fred', licenceType: 'Physician', licenceNumber: '53313', jurisdiction: 'Kingston', practiceLocationName : 'Office #1' },
+      { id: 20, name: 'Aaron	Alvin	Aardvark', licenceType: 'Physician', licenceNumber: '70399', jurisdiction: 'GTA', practiceLocationName : 'Home Office' }
+    ];
+    let prescriberDelegates = [
+      { id: 11, prescriberId: 11, name: 'Chuck Key' },
+      { id: 112, prescriberId: 12, name: 'Charles	Key'  },
+      { id: 113, prescriberId: 13, name: 'Anzee	Chimp'  },
+      { id: 114, prescriberId: 14, name: 'Tom	Brady'  },
+      { id: 115, prescriberId: 15, name: 'Matt Ryan'  },
+      { id: 116, prescriberId: 16, name: 'Jim	Jam'  }   
+    ];
+    let prescriberLocations = [
+      { id:1, prescriberId:11, name: 'Main Office', address: '49 Place D\'Armes, Kingston, ON, K7L 5J3', email:'nice@doct.or', phone: '555-555-5555', fax: '555-555-5555'}
+    ];
+    //return {prescribers, prescriberDelegates, prescriberLocations
+    
     let questions: QuestionBase<any>[] = [
 
       new SelectionQuestion({
@@ -519,6 +521,7 @@ export class InMemoryDataService implements InMemoryDbService {
       ]
     });
 
-    return { gdeforms, classification, priority, specialHandling };
+    return { gdeforms, classification, priority, specialHandling, prescribers, prescriberDelegates, prescriberLocations };
   }
+  
 }
