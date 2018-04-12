@@ -1,0 +1,24 @@
+<div *ngIf="prescriberLocation">
+    <h2>{{ prescriberLocation
+    .name | uppercase }} Details</h2>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
+    fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
+    <mat-form-field fxFlex="100%" fxFlexFill>
+        <input matInput [(ngModel)]="prescriberLocation.id" placeholder="Id" readonly>
+    </mat-form-field>
+    <mat-form-field fxFlex="100%" fxFlexFill>
+      <input matInput [(ngModel)]="prescriberLocation.name" placeholder="Name" readonly>
+    </mat-form-field>
+    <mat-form-field fxFlex fxFlexFill>
+   <input matInput [(ngModel)]="prescriberLocation.address" placeholder="Address" readonly>
+  </mat-form-field>
+  <mat-form-field fxFlex fxFlexFill>
+   <input matInput [(ngModel)]="prescriberLocation.email" placeholder="Email" readonly>
+  </mat-form-field>
+  <mat-form-field fxFlex fxFlexFill>
+   <input matInput [(ngModel)]="prescriberLocation.phone" placeholder="Phone" readonly>
+  </mat-form-field>
+  <mat-form-field fxFlex fxFlexFill>
+      <input matInput [(ngModel)]="prescriberLocation.fax" placeholder="Fax" readonly>
+  </mat-form-field>
+</div>

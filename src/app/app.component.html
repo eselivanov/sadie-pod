@@ -33,9 +33,10 @@
 
 
     </mat-toolbar>
-
+    
     <div class="main">
         <mat-toolbar color="primary" class="page-title" routerLink="/gde" >Create EAP Request</mat-toolbar>
+        
        
 <!--
         <button mat-raised-button color="primary" (click)="test()">Click</button>
@@ -66,14 +67,28 @@
             </div>
         </section>
     </form>
+    </mat-toolbar>
 -->
-
+<!--
+<div class="main">
+        <nav mat-tab-nav-bar>
+                <a mat-tab-link
+                   *ngFor="let link of navLinks"
+                   [routerLink]="link.path"
+                   routerLinkActive #rla="routerLinkActive"
+                   [active]="rla.isActive">
+                  {{link.label}}
+                </a>
+              </nav>-->
         <div class="content">
                 <nav>
-                        <a routerLink="/dashboard">Dashboard</a>
+                        <a routerLink="/dashboard">Multi Select Tools</a>
                         <a routerLink="/gde">GDE</a>
+                        <a routerLink="/prescribers">Prescribers</a>
+                        <a routerLink="/prescriberDashboard">Prescriber Dashboard</a>
                       </nav>   
             <router-outlet></router-outlet>
+            <app-messages></app-messages>
         </div>
     </div>
 

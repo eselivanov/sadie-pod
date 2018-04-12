@@ -3,7 +3,7 @@ export class Prescriber {
     licenceNumber: string;
     name: string; // First Name Middle Name Last Name
     jurisdiction: string;
-
+    id: number;
     // Practice Location
     practiceLocationName : string;
     practiceLocationAddressLine1 : string;

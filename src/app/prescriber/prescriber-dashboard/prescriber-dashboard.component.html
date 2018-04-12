@@ -1,0 +1,8 @@
+<h3>Top Prescribers</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let prescriber of prescribers" class="col-1-4" routerLink="/prescriber/{{prescriber.id}}">
+    <div class="module prescriber">
+      <h4>{{prescriber.name}}</h4>
+    </div>
+  </a>
+</div>

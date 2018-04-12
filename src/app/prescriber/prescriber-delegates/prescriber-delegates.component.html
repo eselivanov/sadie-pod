@@ -1,0 +1,18 @@
+<div *ngIf="prescriber"><h2>{{prescriber.name}}'s Delegates</h2>
+  <h2>Current Delegates</h2>
+          <app-prescriber-delegate-card-list
+                  [prescriberDelegates]="prescriberDelegateList$ | async">
+          </app-prescriber-delegate-card-list>
+      
+
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
+  fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
+<mat-form-field fxFlex="100%" fxFlexFill>
+ <input matInput #prescriberDelegateName placeholder="Delegate Name">
+</mat-form-field>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(prescriberDelegateName.value, prescriber.id); prescriberDelegateName.value=''">
+    Add
+  </button>
+</div>
+</div>

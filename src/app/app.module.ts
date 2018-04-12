@@ -83,7 +83,10 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import {PickListModule} from 'primeng/picklist';
 import { PatientService } from './service/patient.service';
 import { DrugSearchComponent } from './component/drug-search/drug-search.component';
-
+import { PrescribersComponent } from './prescriber/prescribers/prescribers.component';
+import { PrescriberModule } from './prescriber/prescriber.module';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './service/message.service';
 
 // InputTextModule, ButtonModule, DropdownModule, 
 //         TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, MessagesModule, 
@@ -108,16 +111,16 @@ import { DrugSearchComponent } from './component/drug-search/drug-search.compone
           InMemoryDataService, { dataEncapsulation: false, passThruUnknownUrl: true }
         ),
     
-        AppRoutingModule, RouterModule,
+        AppRoutingModule, RouterModule,PrescriberModule
       
       ],
   declarations: [ AppComponent, DynamicFormComponent, DynamicFormQuestionComponent, 
     SelectItemPipePipe, ComplexTableComponent, GeneralRequestInfoComponent, 
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
     DrugDosageRequestInfoComponent, AutoCompleteComponent, DashboardComponent,
-     AutoCompleteComponent, DrugSearchComponent
+     AutoCompleteComponent, DrugSearchComponent, MessagesComponent
   ],
-  providers: [ QuestionControlService, PatientService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService ],
+  providers: [ QuestionControlService, PatientService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService, MessageService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

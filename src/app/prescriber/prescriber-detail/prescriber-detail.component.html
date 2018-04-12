@@ -1,0 +1,38 @@
+<div *ngIf="prescriber">
+    <h2>{{ prescriber.name | uppercase }} Details</h2>
+    
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
+    fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
+    <mat-form-field fxFlex="100%" fxFlexFill>
+        <input matInput [(ngModel)]="prescriber.id" placeholder="Id" readonly>
+    </mat-form-field>
+    <mat-form-field fxFlex="100%" fxFlexFill>
+      <input matInput [(ngModel)]="prescriber.name" placeholder="Name" readonly>
+    </mat-form-field>
+    <mat-form-field fxFlex fxFlexFill>
+   <input matInput [(ngModel)]="prescriber.licenceNumber" placeholder="Registration Number" readonly>
+  </mat-form-field>
+  <mat-form-field fxFlex fxFlexFill>
+   <input matInput [(ngModel)]="prescriber.licenceType" placeholder="Registration Type" readonly>
+  </mat-form-field>
+  <mat-form-field fxFlex fxFlexFill>
+   <input matInput [(ngModel)]="prescriber.jurisdiction" placeholder="Jurisdication" readonly>
+  </mat-form-field>
+  </div>
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+  </div>
+  <app-prescriber-delegates *ngIf="prescriber" [prescriber]="prescriber"></app-prescriber-delegates>
+  <app-prescriber-locations *ngIf="prescriber" [prescriber]="prescriber"></app-prescriber-locations>
+  <router-outlet></router-outlet>
+<!-- TOH example
+<div *ngIf="prescriber">
+<h2>{{ prescriber.name | uppercase }} Details</h2>
+<div><span>id: </span>{{prescriber.id}}</div>
+<div>
+    <label>name:
+      <input [(ngModel)]="prescriber.name" placeholder="name">
+    </label>
+</div>
+</div>
+-->

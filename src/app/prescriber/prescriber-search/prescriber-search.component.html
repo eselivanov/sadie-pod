@@ -1,0 +1,13 @@
+<div id="search-component">
+    <h4>Prescriber Search</h4>
+  
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  
+    <ul class="search-result">
+      <li *ngFor="let prescriber of prescribers$ | async" >
+        <a routerLink="/detail/{{prescriber.id}}">
+          {{prescriber.name}}
+        </a>
+      </li>
+    </ul>
+  </div>

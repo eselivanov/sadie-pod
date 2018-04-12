@@ -13,6 +13,7 @@ export class PrescriberRequestInfoComponent implements OnInit {
                             licenceNumber : "12345678",
                             licenceType : "CPSO", 
                             jurisdiction : "ON",
+                            id:2,
                             practiceLocationName : "Nick's Hollywood Upstairs Medical Express", 
                             practiceLocationAddressLine1 : "Springfield USA",
                             practiceLocationFaxNumber : "(613) 555-5555", 

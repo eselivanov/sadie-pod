@@ -1,0 +1,43 @@
+<mat-card *ngFor="let prescriber of prescribers" class="prescriber-card mat-elevation-z10">
+
+    <mat-card-header>
+
+        <mat-card-title>{{prescriber.name}}</mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item>
+                    {{prescriber.licenceType}}
+            </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <mat-list>
+                <mat-list-item>
+                        {{prescriber.licenceNumber}}
+                </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item>
+                    {{prescriber.jurisdiction}}
+            </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <mat-list>
+            <mat-list-item>
+                    {{prescriber.practiceLocationName}}
+            </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions class="prescriber-actions">
+
+        <button mat-button class="mat-raised-button mat-primary" [routerLink]="['../prescriber/', prescriber.id]">
+            VIEW PRESCRIBER
+        </button>
+
+    </mat-card-actions>
+
+</mat-card>

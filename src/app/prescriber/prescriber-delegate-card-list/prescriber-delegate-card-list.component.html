@@ -1,0 +1,32 @@
+
+<mat-card *ngFor="let prescriberDelegate of prescriberDelegates" class="prescriber-delegate card mat-elevation-z10">
+
+    <mat-card-header>
+
+        <mat-card-title>{{prescriberDelegate.name}}</mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item>
+                    {{prescriberDelegate.id}}
+            </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+        <mat-list>
+                <mat-list-item>
+                        {{prescriberDelegate.name}}
+                </mat-list-item>
+        </mat-list>
+        <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions class="prescriber-delegate-actions">
+
+        <button mat-button class="mat-raised-button mat-primary" [routerLink]="['../prescriber/', prescriberDelegate.id]">
+            VIEW PRESCRIBER DELEGATE
+        </button>
+
+    </mat-card-actions>
+
+</mat-card>

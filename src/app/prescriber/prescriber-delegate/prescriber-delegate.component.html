@@ -1,0 +1,11 @@
+<div *ngIf="prescriberDelegate">
+    <h2>{{ prescriberDelegate.name | uppercase }} Details</h2>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
+    fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
+    <mat-form-field fxFlex="100%" fxFlexFill>
+        <input matInput [(ngModel)]="prescriberDelegate.id" placeholder="Id" readonly>
+    </mat-form-field>
+    <mat-form-field fxFlex="100%" fxFlexFill>
+      <input matInput [(ngModel)]="prescriberDelegate.name" placeholder="Name" readonly>
+    </mat-form-field>
+</div>

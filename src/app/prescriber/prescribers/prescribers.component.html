@@ -1,0 +1,40 @@
+<h2>Existing Prescribers</h2>
+
+
+
+        <app-prescribers-card-list
+                [prescribers]="prescriberList$ | async">
+        </app-prescribers-card-list>
+
+<div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px"
+     fxLayout.lt-sm="column " fxLayoutAlign.lt-sm="center stretch" fxLayoutGap.lt-sm="auto">
+  <mat-form-field fxFlex="100%" fxFlexFill>
+    <input matInput #prescriberName placeholder="Pescriber Name">
+  </mat-form-field>
+    <!-- <label>Prescriber name:
+      <input matInput #prescriberName />
+    </label> -->
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(prescriberName.value); prescriberName.value=''">
+      Add
+    </button>
+  </div>
+<ul class="prescribers">
+  <li *ngFor="let prescriber of prescribers">
+    <a routerLink="/prescriber/{{prescriber.id}}">
+      <span class="badge">{{prescriber.id}}</span> {{prescriber.name}}
+    </a>
+    <button class="delete" title="delete prescriber"
+    (click)="delete(prescriber)">x</button>
+  </li>
+</ul>
+<!-- Old TOH
+<h2>My Prescribers</h2>
+<ul class="prescribers">
+  <li *ngFor="let prescriber of prescribers">
+    <a routerLink="/detail/{{prescriber.id}}">
+      <span class="badge">{{prescriber.id}}</span> {{prescriber.name}}
+    </a>
+  </li>
+</ul>
+-->
