@@ -3,6 +3,14 @@
         <a class="home-link" routerLink="/">
             <span class="app-title">{{ title }}</span>
         </a>
+        <nav>
+                        
+                <a routerLink="/gde" routerLinkActive="active">Create EAP Request</a>
+                <a routerLink="/prescribers" routerLinkActive="active">Prescribers</a>
+                <a routerLink="/prescriberDashboard" routerLinkActive="active">Prescriber Dashboard</a>
+                <a routerLink="/dashboard" routerLinkActive="active">Tools Test Display</a>
+              </nav>   
+   <!-- <router-outlet></router-outlet> -->
         <!-- This fills the remaining space of the current row -->
         <span class="toolbar-fill-center"></span>
 
@@ -35,8 +43,8 @@
     </mat-toolbar>
     
     <div class="main">
-        <mat-toolbar color="primary" class="page-title" routerLink="/gde" >Create EAP Request</mat-toolbar>
-        
+      <!--  <mat-toolbar color="primary" class="page-title" routerLink="/gde" >Create EAP Request</mat-toolbar>
+    -->
        
 <!--
         <button mat-raised-button color="primary" (click)="test()">Click</button>
@@ -80,16 +88,17 @@
                   {{link.label}}
                 </a>
               </nav>-->
-        <div class="content">
-                <nav>
-                        <a routerLink="/dashboard">Multi Select Tools</a>
-                        <a routerLink="/gde">GDE</a>
+        <div class="content" >
+          <!--      <nav>
+                        
+                        <a routerLink="/gde">Create EAP Request</a>
                         <a routerLink="/prescribers">Prescribers</a>
                         <a routerLink="/prescriberDashboard">Prescriber Dashboard</a>
-                      </nav>   
-            <router-outlet></router-outlet>
+                        <a routerLink="/dashboard">Tools Test Display</a>
+                      </nav>  --> 
+            <router-outlet></router-outlet> 
             <app-messages></app-messages>
-        </div>
+       </div>
     </div>
 
 </div>

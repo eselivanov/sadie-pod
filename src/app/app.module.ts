@@ -88,6 +88,8 @@ import { PrescriberModule } from './prescriber/prescriber.module';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './service/message.service';
 
+
+
 // InputTextModule, ButtonModule, DropdownModule, 
 //         TableModule, CheckboxModule, CalendarModule, RadioButtonModule, DataTableModule, MessagesModule, 
 //         MessageModule, 
@@ -100,7 +102,7 @@ import { MessageService } from './service/message.service';
         MatIconModule, MatRadioModule, MatTableModule, MatListModule, MatExpansionModule,
         MatSidenavModule, MatToolbarModule, MatButtonModule, MatMenuModule, MatAutocompleteModule,
         HttpClientModule,AngularMultiSelectModule,MultiselectDropdownModule,
-        PickListModule,  
+        PickListModule, 
         FlexLayoutModule,
         FileUploadModule,
     
