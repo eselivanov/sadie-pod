@@ -5,12 +5,12 @@ export class LabResult {
   labResultType: KeyPair;
   labTestDate: Date;
   labResultValue: string;
-  attachment: File;
+  attachment: string;
 
   constructor(
     labResultType?: KeyPair,
   labTestDate?: Date,
   labResultValue?: string,
-  attachment?: File
+  attachment?: string
   ) {}
 }

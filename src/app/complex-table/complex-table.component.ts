@@ -69,7 +69,7 @@ export class ComplexTableComponent implements OnChanges {
     console.log(rowData);
     for(let file of event.files) {
       console.log(file);
-      rowData.attachment = file;
+      rowData.attachment = file.name;
       this.uploadedFiles.push(file);
     }
     console.log(this.dataSource);
