@@ -94,6 +94,9 @@ export class RequestRecordWorkQComponent implements OnInit {
    
     this.codeService.getClassificationById(this.key)
       .subscribe(classification => this.requestForm.EADrugRequest.classification = classification);
+      console.log(this.requestForm.EADrugRequest.classification);
+      console.log(this.classification);
+      //console.log(this.requestForm.EADrugRequest.classification.key);
       this.requestForm.EADrugRequest.drug = "Tylenol";
       this.requestForm.EADrugRequest.indication = "Swelling";
       this.requestForm.Patient.firstName = "Tester";
