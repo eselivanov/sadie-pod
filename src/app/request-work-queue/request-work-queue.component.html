@@ -1,0 +1,47 @@
+<p>
+  request-work-queue works!
+</p>
+<div class="example-container mat-elevation-z8">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="requestId">
+        <mat-header-cell *matHeaderCellDef> Req No. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ReqId}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="prescriberName">
+        <mat-header-cell *matHeaderCellDef> Prescriber Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Prescriber.name}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="drug">
+        <mat-header-cell *matHeaderCellDef> Drug </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.EADrugRequest.drug}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="indication">
+        <mat-header-cell *matHeaderCellDef> Indication </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.EADrugRequest.indication}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="patientName">
+          <mat-header-cell *matHeaderCellDef> Patient Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Patient.firstName}} </mat-cell>
+        </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  

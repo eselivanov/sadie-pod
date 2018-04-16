@@ -87,6 +87,8 @@ import { PrescribersComponent } from './prescriber/prescribers/prescribers.compo
 import { PrescriberModule } from './prescriber/prescriber.module';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './service/message.service';
+import { RequestWorkQueueComponent } from './request-work-queue/request-work-queue.component';
+import { RequestRecordWorkQComponent } from './request-record-work-q/request-record-work-q.component';
 
 
 
@@ -120,7 +122,7 @@ import { MessageService } from './service/message.service';
     SelectItemPipePipe, ComplexTableComponent, GeneralRequestInfoComponent, 
     PatientRequestInfoComponent, PrescriberRequestInfoComponent, DrugRequestInfoComponent, 
     DrugDosageRequestInfoComponent, AutoCompleteComponent, DashboardComponent,
-     AutoCompleteComponent, DrugSearchComponent, MessagesComponent
+     AutoCompleteComponent, DrugSearchComponent, MessagesComponent, RequestWorkQueueComponent, RequestRecordWorkQComponent
   ],
   providers: [ QuestionControlService, PatientService, QuestionService, RuleServiceService, CodeTableService, ElasticSearchService, MessageService ],
   bootstrap: [ AppComponent ]

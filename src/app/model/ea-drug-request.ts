@@ -2,7 +2,7 @@ import { KeyPair } from './key-pair'
 
 // Exceptional Access Drug Request
 export class EADrugRequest {
-    classication : KeyPair;
+    classification : KeyPair;
     requestPriority : KeyPair;
     specialHandling : KeyPair;
     requestDate : Date;

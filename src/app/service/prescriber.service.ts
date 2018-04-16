@@ -47,7 +47,10 @@ export class PrescriberService {
         catchError(this.handleError<Prescriber>(`getPrescriber id=${id}`))
       );
   }
+  /** GET prescriber Object by id  */
+  getPrescriberById(id:number){
 
+  }
   /** GET prescriber by id. Will 404 if id not found */
   getPrescriber(id: number): Observable<Prescriber> {
     const url = `${this.prescribersUrl}/${id}`;
@@ -68,7 +71,18 @@ export class PrescriberService {
       catchError(this.handleError<Prescriber[]>('searchPrescribers', []))
     );
   }
-
+  getPrescriberReqWorkQueue(id: number): Observable<Prescriber>{
+    const url = `${this.prescribersUrl}/${id}`;
+    return this.http.get<Prescriber>(url).pipe(
+      tap(_ => this.log(`fetched prescriber id=${id}`)),
+      catchError(this.handleError<Prescriber>(`getPrescriber id=${id}`)));
+  }
+  getPrescriberNameReqWorkQueue(id: number): Observable<Prescriber>{
+    const url = `${this.prescribersUrl}/${id}`;
+    return this.http.get<Prescriber>(url).pipe(
+      tap(_ => this.log(`fetched prescriber id=${id}`)),
+      catchError(this.handleError<Prescriber>(`getPrescriber id=${id}`)));
+  }
   //////// Save methods //////////
 
   /** POST: add a new prescriber to the server */

@@ -23,6 +23,25 @@ export class CodeTableService {
       catchError(this.handleError<KeyPair[]>(`getClassification()`))
     );
   }
+  getClassificationById(key: string): Observable<KeyPair>{
+    const url = `${this.classificationUrl}/${key}`;
+    return this.http.get<KeyPair>(`api/classification/?value=${key}`).pipe(
+      tap(_ => this.log(`fetched  the classification`)),
+      catchError(this.handleError<KeyPair>(`getClassification()`))
+    );
+  }
+  /*
+  return this.http.get<Prescriber[]>(`api/prescribers/?name=${term}`).pipe(
+      tap(_ => this.log(`found prescribers matching "${term}"`)),
+      catchError(this.handleError<Prescriber[]>('searchPrescribers', []))
+    );
+  getPrescriber(id: number): Observable<Prescriber> {
+    const url = `${this.prescribersUrl}/${id}`;
+    return this.http.get<Prescriber>(url).pipe(
+      tap(_ => this.log(`fetched prescriber id=${id}`)),
+      catchError(this.handleError<Prescriber>(`getPrescriber id=${id}`))
+    );
+  }*/
 
   /** GET Priority code table */
   getPriority(): Observable<KeyPair[]> {

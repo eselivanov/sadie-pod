@@ -14,7 +14,7 @@ import { KeyPair } from '../model/key-pair';
 export class GeneralRequestInfoComponent implements OnInit {
 
   @Input() eaDrugRequest: EADrugRequest;
-  classifications: KeyPair[]
+  classifications: KeyPair[];
   priorities: KeyPair[];
   specialHandling: KeyPair[];
 

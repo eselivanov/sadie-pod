@@ -14,6 +14,9 @@ import { PrescriberMaintenanceComponent } from './prescriber/prescriber-maintena
 import { PrescriberSearchComponent } from './prescriber/prescriber-search/prescriber-search.component';
 import { PrescribersCardListComponent } from './prescriber/prescribers-card-list/prescribers-card-list.component';
 import { DelegateComponent } from './prescriber/delegate/delegate.component';
+import { RequestWorkQueueComponent } from './request-work-queue/request-work-queue.component';
+import { RequestRecordWorkQComponent } from './request-record-work-q/request-record-work-q.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/gde', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
@@ -26,7 +29,9 @@ const routes: Routes = [
   { path: 'prescriberDelegate', component: PrescriberDelegateComponent },
 { path: 'prescriberDelegate/:id', component: PrescriberDelegateComponent },  
 { path: 'delegates', component: DelegateComponent},
-{ path: 'prescriberDelegate/:id', component: PrescriberDelegateComponent }
+{ path: 'prescriberDelegate/:id', component: PrescriberDelegateComponent },
+{ path: 'requestWorkQueue', component: RequestWorkQueueComponent },
+{ path: 'requestRecordWorkQ', component: RequestRecordWorkQComponent }
   
 ];
 /*const routes: Routes = [
